@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+@theme{
+    --color-bgtransparent: #06303e;
+    --color-border:#385965;
+    --color-website: #11ae68;
+}
