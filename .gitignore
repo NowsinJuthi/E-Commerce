@@ -7,34 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
-
-# Production build
-dist/
-dist-ssr/
-
-# Local environment files
+node_modules
+dist
+dist-ssr
 *.local
-.env
-.env.*.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea/
+.idea
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Optional: OS-specific
-Thumbs.db
-
-# Lock files (⚠️ keep if you want deterministic installs)
-# Uncomment to ignore, but usually better to commit
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
+node_modules/
+.pnpm/
