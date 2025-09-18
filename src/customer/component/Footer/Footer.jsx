@@ -7,8 +7,7 @@ import BottomFooter from './BottomFooter';
 
 const Footer = () => {
     return (
-        <div className="contain px-10 pt-10 bg-footer
-           text-gray-300" >
+        <div className="contain px-10 pt-10 text-gray-300 bg-box" >
             <div className="main grid grid-cols-12 gap-4">
 
                 <div className="logo col-span-3">

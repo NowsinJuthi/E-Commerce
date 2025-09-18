@@ -83,8 +83,8 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                         <Link to={'/check-out'}>
                             <button
                                 onClick={handleCheckout}
-                                className="mt-6 w-full cursor-pointer bg-button text-gray-200 py-2 rounded-xl hover:bg-[#11ae68] transition"
-                            >
+                                className="mt-6 w-[50%] cursor-pointer bg-button text-gray-200 py-2
+                                rounded-xl hover:bg-[#11ae68] transition">
                                 Checkout
                             </button>
                         </Link>

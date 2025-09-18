@@ -26,10 +26,11 @@ const TopupPage = ({ cart, setCart }) => {
     <div
       className="top bg-cover bg-center"
       style={{
-        backgroundImage: `url(${product.bgimg || "/images/default-bg.jpg"})`,
-      }}
-    >
-      <div className="transparents bg-bgtransparent pt-6">
+        backgroundImage: `url(${product.bgimg || "/images/bg.jpg"})`,
+      }}>
+
+        
+      <div className="transparents bg-imgbg pt-6">
         <div className="main backdrop-blur-sm rounded-2xl mx-5 
              bg-background">
           <div className="top-part grid grid-cols-12 p-3 rounded-xl border border-border">

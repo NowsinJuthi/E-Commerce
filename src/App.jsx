@@ -8,6 +8,7 @@ import CartPage from "./customer/component/AddToCart/CartPage";
 import CheckOutPage from "./customer/component/CheckOut/CheckOutPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoginPage from "./customer/component/LoginPage/LoginPage";
 
 
 function App() {
@@ -17,30 +18,32 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url('/images/j.jpg')` }}>
-        <div className="transparents bg-bgtransparent max-w-screen">
+      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover bg-imgbg" >
+        <div className="transparents max-w-screen ">
           <Navigation cart={cart} setCart={setCart} />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/uniqbd/:title" element={<TopupPage cart={cart} setCart={setCart} />} />  
+            <Route path="/uniqbd/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
-          </Routes>  
-                 <ToastContainer 
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+            <Route path="/log-in" element={<LoginPage />} />
+          </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+           <Footer />
         </div>
       </div>
-      <Footer /> 
+     
 
     </BrowserRouter>
   )

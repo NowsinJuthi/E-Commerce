@@ -63,7 +63,8 @@ const Package = ({ cart, setCart }) => {
                         selectedProduct.product.map((prod, index) => (
                             <label
                                 key={index}
-                                className="group relative rounded-xl border border-border bg-box backdrop-blur-sm cursor-pointer transition-all hover:shadow-md hover:border-[#1c1f1c] has-checked:border-[#131312] has-checked:bg-[#0f7045a6] p-2 items-center"
+                                className="group relative rounded-xl border border-border bg-box backdrop-blur-sm cursor-pointer transition-all hover:shadow-md hover:border-[#1c1f1c]
+                                 has-checked:border-[#131312] has-checked:bg-[#0f7045a6] p-2 items-center"
                             >
                                 <input
                                     type="radio"
@@ -86,7 +87,7 @@ const Package = ({ cart, setCart }) => {
                                     <div className="price col-span-5 pl-14">
                                         {selectedProduct.productPrice && (
                                             <span className="text-gray-200 text-sm font-medium mt-1">
-                                                {selectedProduct.productPrice[index]} TK
+                                                {selectedProduct.productPrice[index]}
                                             </span>
                                         )}
                                     </div>
@@ -96,7 +97,8 @@ const Package = ({ cart, setCart }) => {
                 </div>
 
                 {/* Right Side */}
-                <div className="right col-span-6 backdrop-blur-sm mb-5 rounded-2xl border border-border shadow-md p-6 mt-8 ml-7 bg-background">
+                <div className="right col-span-6 backdrop-blur-sm mb-5 rounded-2xl border border-border shadow-md p-6 mt-8 ml-7 
+                bg-background">
                     <div className="main grid">
                         {/* Quantity Selector */}
                         <div className="quantity grid grid-cols-12 col-span-2 pb-6 pt-5 pl-6 border border-border bg-box rounded-2xl">
@@ -116,7 +118,7 @@ const Package = ({ cart, setCart }) => {
                             <hr className="text-gray-500 pt-5" />
                             <h1 className="text-gray-200 text-sm">
                                 Price: {selectedPackageIndex !== null && selectedProduct?.productPrice
-                                    ? parseInt(selectedProduct.productPrice[selectedPackageIndex]) * quantity + " TK"
+                                    ? parseInt(selectedProduct.productPrice[selectedPackageIndex]) * quantity + " "
                                     : 'Select a package'}
                             </h1>
 
@@ -127,13 +129,14 @@ const Package = ({ cart, setCart }) => {
                                 selectedPackageIndex={selectedPackageIndex}
                                 quantity={quantity}
                             />
-
                             <button
                                 onClick={AddToCart}
-                                className="mt-6 w-full cursor-pointer bg-button text-gray-200 py-2 rounded-xl hover:bg-white transition"
-                            >
+                                className="mt-6 w-full cursor-pointer bg-button 
+             text-gray-200 py-2 rounded-xl 
+             transition bg-box">
                                 Add To Cart
                             </button>
+
                         </div>
                     </div>
                 </div>
