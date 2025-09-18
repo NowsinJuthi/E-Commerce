@@ -15,8 +15,7 @@ const Navigation = ({ cart, setCart }) => {
 
   return (
     <div className="sticky top-0 z-[50] 
-    bg-gradient-to-r from-[#25524ffb]/40 via-bgtransparent/70
-     to-website/40">
+    bg-nav">
       <div className="w-full">
 
         <Topnav />
@@ -43,7 +42,7 @@ const Navigation = ({ cart, setCart }) => {
           </div>
 
           {/* Desktop */}
-          <div className="hidden lg:grid grid-cols-12 items-center py-3">
+          <div className="hidden lg:grid grid-cols-12 items-center py-3 shadow-md">
             {/* Logo */}
             <div className="col-span-3 ml-4">
               <Link to="/">

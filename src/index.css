@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-    --color-bgtransparent: rgb(3, 27, 35, .20);
     --color-border: rgb(124, 147, 173, 0.5);
-    --color-website: #11ae68;
-    /* --background-background: rgba(0, 0, 0, .3); */
     --background-background: linear-gradient(-5deg,
             rgba(11, 36, 64, .05) 0%,
             rgba(42, 73, 108, 1) 1%,
             rgba(11, 36, 64, .05) 70%);
-       
     --background-box: rgb(52, 78, 113, 0.5);
-    /* --background-button: rgba(0, 0, 0, .25); */
     --background-button: linear-gradient(to right, rgb(0, 222, 222), rgb(0, 102, 255));
-    --color-footer: rgba(3, 27, 35, .90);
-    --background-imgbg: linear-gradient(-54deg,
-            rgba(11, 36, 64, 1) 0%,
-            rgba(42, 73, 108, 2) 1%,
+    --background-imgbg: linear-gradient(-60deg,
+            rgba(11, 36, 65, 1) 0%,
+            rgba(42, 73, 108, 1) 0%,
             rgba(11, 36, 64, 1) 70%);
-    --background-hover: linear-gradient(to right, rgb(0, 222, 222), rgb(0, 102, 255));
+
+    --background-nav: linear-gradient(5deg,
+            rgba(11, 36, 64, .95) 0%,
+            rgba(42, 73, 108, 1) 100%,
+            rgba(11, 36, 64, .05) 100%);
 }
 
 .bg-background {
@@ -37,6 +35,6 @@
     background-image: var(--background-imgbg);
 }
 
-.bg-hover {
-    background-image: var(--background-hover);
+.bg-nav {
+    background-image: var(--background-nav);
 }

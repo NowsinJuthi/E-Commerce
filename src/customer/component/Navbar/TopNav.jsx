@@ -5,7 +5,7 @@ import { GoClock } from "react-icons/go"
 const Topnav = () => {
     return (
         <>
-            <div className="sticky top-0 z-[50] bg-gradient-to-r from-[#25524ffb]/40 via-bgtransparent/70 to-website/40">
+            <div className="sticky top-0 z-[50] bg-background shadow-md">
                 <div className="w-full">
 
                     {/* Top Header */}
