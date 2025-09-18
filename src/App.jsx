@@ -26,7 +26,7 @@ function App() {
             <Route path="/uniqbd/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
-            <Route path="/log-in" element={<LoginPage />} />
+            
           </Routes>
           <ToastContainer
             position="top-right"

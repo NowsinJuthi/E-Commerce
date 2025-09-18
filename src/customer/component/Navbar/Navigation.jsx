@@ -10,7 +10,7 @@ import Topnav from './TopNav'
 
 
 
-const Navigation = ({cart, setCart}) => {
+const Navigation = ({ cart, setCart }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -63,9 +63,12 @@ const Navigation = ({cart, setCart}) => {
             {/* Right */}
             <div className="col-span-3 flex justify-center items-center gap-12 pr-6">
               <IoSearchOutline className="h-6 w-6 cursor-pointer hover:text-green" />
-              <div className="flex items-center gap-2 cursor-pointer hover:text-green">
-                <VscAccount className="h-6 w-6" /> <span>Log In</span>
-              </div>
+
+              <Link to={'/log-in'}>
+                <div className="flex items-center gap-2 cursor-pointer hover:text-green">
+                  <VscAccount className="h-6 w-6" /> <span>Log In</span>
+                </div>
+              </Link>
 
               <div className="relative">
                 <Link to={'/cart'}>
