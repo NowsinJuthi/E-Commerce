@@ -25,8 +25,8 @@ const Homeslider = () => {
   };
 
   return (
-    <div className="col-span-12 w-full" style={{backgroundImage:`url(${'/images/j.jpg'})`}}>
-      <div className="transparents bg-bgtransparent/70 max-w-screen">
+    <div className="col-span-12 w-full">
+      <div className="transparents max-w-screen">
        <Slider
         className="slider-container"
         ref={(slider) => (sliderRef = slider)}
@@ -54,7 +54,7 @@ const Homeslider = () => {
         </div>
       </Slider>
 
-      <GameTopUp/>
+   
       </div>
     </div>
   );

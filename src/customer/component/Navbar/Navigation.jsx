@@ -10,11 +10,13 @@ import Topnav from './TopNav'
 
 
 
-const Navigation = () => {
+const Navigation = ({cart, setCart}) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="sticky top-0 z-[50] bg-gradient-to-r from-[#25524ffb]/40 via-bgtransparent/70 to-website/40">
+    <div className="sticky top-0 z-[50] 
+    bg-gradient-to-r from-[#25524ffb]/40 via-bgtransparent/70
+     to-website/40">
       <div className="w-full">
 
         <Topnav />
@@ -64,11 +66,14 @@ const Navigation = () => {
               <div className="flex items-center gap-2 cursor-pointer hover:text-green">
                 <VscAccount className="h-6 w-6" /> <span>Log In</span>
               </div>
+
               <div className="relative">
-                <ShoppingBagIcon className="h-6 w-6 text-white hover:text-gray-500" />
-                <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-xs font-medium text-white bg-red-500 rounded-full">
-                  0
-                </span>
+                <Link to={'/cart'}>
+                  <ShoppingBagIcon className="h-6 w-6 text-white hover:text-website" />
+                  <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-xs font-medium text-white bg-red-500 rounded-full">
+                    {cart.length}
+                  </span>
+                </Link>
               </div>
             </div>
           </div>

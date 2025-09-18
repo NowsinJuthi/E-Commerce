@@ -1,14 +1,17 @@
-import React from 'react';
-import Navigation from '../Navbar/Navigation';
-import Homeslider from './HomeSlider/Homeslider';
+
+import CartPage from '../AddToCart/CartPage';
 import GameTopUp from './HomeSectionCard/GameTopUp';
-import Footer from '../Footer/Footer';
+import Homeslider from './HomeSlider/Homeslider';
+
 
 const MainPage = () => {
     return (
-        <div>
-            <Homeslider/>
-         
+        <div className="col-span-12 w-full" style={{ backgroundImage: `url(${'/images/j.jpg'})` }}>
+            <div className="transparents bg-bgtransparent/70 max-w-screen">
+                <Homeslider />
+                <GameTopUp/>
+                
+            </div>
         </div>
     );
 };

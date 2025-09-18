@@ -7,11 +7,12 @@ import BottomFooter from './BottomFooter';
 
 const Footer = () => {
     return (
-        <div className="contain px-10 pt-10 bg-bgtransparent/60 text-gray-300" >
+        <div className="contain px-10 pt-10 bg-footer
+           text-gray-300" >
             <div className="main grid grid-cols-12 gap-4">
 
                 <div className="logo col-span-3">
-                    <img className='w-[90%] h-[40%] pb-3' src="/images/contactwhite.png" alt="" />
+                    <img className='w-[85%] h-[40%] pb-3' src="/images/contactwhite.png" alt="" />
                     <span className='text-sm'>UniQbd Offers The Perfect Online Shopping Experience With
                         Easy Mechanism.It Provides Products Through Trusted And Secure
                         Gateways.
@@ -19,22 +20,22 @@ const Footer = () => {
                 </div>
                 <div className="products col-span-2">
                     <h1 className='text-center'>PRODUCTS</h1>
-                    <Products/>
+                    <Products />
                 </div>
                 <div className="store col-span-2">
                     <h1 className='text-center'>OUR STORES</h1>
-                    <Store/>
+                    <Store />
                 </div>
                 <div className="links col-span-3">
                     <h1 className='pl-12'>USEFUL LINKS</h1>
-                    <UseLink/>
+                    <UseLink />
                 </div>
                 <div className="media col-span-2">
                     <h1>SOCIAL MEDIA</h1>
-                    <Media/>
+                    <Media />
                 </div>
             </div>
-            <BottomFooter/>
+            <BottomFooter />
 
         </div>
     );
