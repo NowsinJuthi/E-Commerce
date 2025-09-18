@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./customer/component/HomePage/MainPage";
 import Navigation from "./customer/component/Navbar/Navigation";
 import Footer from "./customer/component/Footer/Footer";
-import TopupPage from "./customer/component/SinglePage/TopUpPage";
+import TopupPage from "./customer/component/SinglePage/TopupPage";
 import { useState } from "react";
 import CartPage from "./customer/component/AddToCart/CartPage";
 import CheckOutPage from "./customer/component/CheckOut/CheckOutPage";
