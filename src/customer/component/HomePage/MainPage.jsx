@@ -1,7 +1,7 @@
 
-import CartPage from '../AddToCart/CartPage';
 import GameTopUp from './HomeSectionCard/GameTopUp';
 import Homeslider from './HomeSlider/Homeslider';
+import GiftCard from './HomeSectionCard/GiftCard';
 
 
 const MainPage = () => {
@@ -10,7 +10,7 @@ const MainPage = () => {
             <div className="transparents bg-bgtransparent/70 max-w-screen">
                 <Homeslider />
                 <GameTopUp/>
-                
+                <GiftCard/>
             </div>
         </div>
     );

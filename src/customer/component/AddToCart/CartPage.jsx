@@ -84,13 +84,13 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                             <button
                                 onClick={handleCheckout}
                                 className="mt-6 w-[50%] cursor-pointer bg-button text-gray-200 py-2
-                                rounded-xl hover:bg-[#11ae68] transition">
+                                rounded-xl hover:bg-[#39557c] transition">
                                 Checkout
                             </button>
                         </Link>
 
                         <Link to={'/'}>
-                            <p className='text-sm py-5 hover:text-website'>Continue Shopping</p>
+                            <p className='text-sm py-5 hover:text-hover'>Continue Shopping</p>
                         </Link>
                     </div>
 

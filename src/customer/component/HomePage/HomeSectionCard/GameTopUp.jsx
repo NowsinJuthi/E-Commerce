@@ -52,9 +52,8 @@ const GameTopUp = () => {
 
   return (
     <div className="slider-container w-full px-5 py-5 bg-imgbg">
-      <div className="transparents pt-6 pb-10 px-4 rounded-xl border
-       border-border bg-box backdrop-blur-sm">
-        <h1 className="text-3xl font-bold text-white mb-3 border-l-4 border-website pl-3">
+      <div className="transparents pt-6 pb-10 px-4 rounded-xl bg-box backdrop-blur-sm">
+        <h1 className="text-3xl font-bold text-white mb-3 border-l-4 border-gray-400 pl-3">
           Game Top Up
         </h1>
 
@@ -65,7 +64,7 @@ const GameTopUp = () => {
                 className="main p-2 group transition-all duration-300 
                 hover:scale-105">
                 <div className="rounded-xl shadow-md bg-box
-                  hover:shadow-xl border border-border overflow-hidden">
+                  hover:shadow-xl overflow-hidden">
                   <img
                     src={product.img}
                     className="w-full object-contain p-2 

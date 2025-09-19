@@ -20,12 +20,12 @@ const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, q
             productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
         };
 
-        const exists = cart.find(item => item.id === selectedItem.id);
+        const exists = cart.find(item => item.package === selectedItem.package);
         if (exists) {
             toast.error("🦄 Item already added to cart!!", { autoClose: 1500 });
         } else {
             setCart([...cart, selectedItem]);
-            toast.success("🦄 Item added to cart!", { autoClose: 1500 });
+            toast.success("Thank you for your order", { autoClose: 1500 });
         }
         setTimeout(() => navigate("/check-out"), 1500);
     };
@@ -35,9 +35,10 @@ const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, q
            
             <button
                 onClick={handleCheckout}
-                className="mt-6 w-full cursor-pointer bg-button text-gray-200 py-2 rounded-xl hover:bg-[#11ae68] transition"
+                className="mt-6 w-full cursor-pointer hover:bg-[#39557c] bg-button
+                 text-gray-200 py-2 rounded-xl hover:bg-hover transition"
             >
-                Checkout
+                Buy Now
             </button>
         </>
     );

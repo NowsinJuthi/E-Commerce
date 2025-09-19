@@ -9,35 +9,128 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
     <div className="main grid grid-cols-12 text-gray-200">
       {/* LEFT SIDE: Customer Info */}
       <div className="left-side col-span-6 mr-3 ml-5 my-10 p-5 rounded-2xl
-       bg-background backdrop-blur-sm border border-border">
+       bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
         <div className="all-info">
           <h1 className='text-2xl pb-2'>Customer Information</h1>
           <hr className='text-gray-600' />
-          <p className='pt-3 pb-2'>Your Name</p>
-          <input className='p-2 rounded-md w-full pl-3 bg-box' type="text" placeholder='Enter your name' />
-          <p className='pt-3 pb-2'>State</p>
-          <select className="w-full bg-box rounded-md 
-          p-2 pl-3 text-base text-gray-400 bg-box">
-            <option>Dhaka</option>
-            <option>Chattogram</option>
-            <option>Khulna</option>
-            <option>Rajshahi</option>
-            <option>Barishal</option>
-            <option>Sylhet</option>
-            <option>Rangpur</option>
-            <option>Mymensingh</option>
-          </select>
-          <p className='pt-3 pb-2'>Mobile Number</p>
-          <input className=' p-2 rounded-md w-full pl-3 bg-box' type="text" placeholder='Enter your contact number' />
-          <p className='pt-3 pb-2'>Email</p>
-          <input className=' p-2 rounded-md w-full pl-3 bg-box' type="email" placeholder='Enter your email' />
+
+
+          <form action="submit">
+            <div className="username pb-3 text-center pt-10 w-[60%]">
+
+              {/* USENAME */}
+              <label>
+                <input
+                  type="text"
+                  name="username"
+                  required
+                  className='p-2 rounded-md w-[575px] peer
+                                              bg-[#0b2440] border-opacity-50 outline-none 
+                                              focus:border-green peer text-gray-200 mb-4'/>
+                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
+                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
+                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
+                                           backdrop-blur-sm backdrop-opacity-5
+                                           -ml-36 peer-valid:text-[20px] peer-valid:-translate-y-10'>
+                  Your Name
+                </span>
+              </label>
+
+
+              {/* STATE */}
+              <label>
+                <input
+                  type="text"
+                  name="state"
+                  required
+                  className='p-2 rounded-md w-[575px] peer
+                                              bg-[#0b2440] border-opacity-50 outline-none 
+                                              focus:border-green peer text-gray-200 mb-4'
+                />
+                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
+                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
+                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
+                                           backdrop-blur-sm backdrop-opacity-5
+                                           -ml-40 peer-valid:text-[20px] peer-valid:-translate-y-10'>
+                  State
+                </span>
+              </label>
+
+
+
+              {/* MOBILE-NUMBER */}
+
+              <label>
+                <input
+                  type="text"
+                  name="number"
+                  required
+                  className='p-2 rounded-md w-[575px] peer
+                                              bg-[#0b2440] border-opacity-50 outline-none 
+                                              focus:border-green peer text-gray-200 mb-4'
+                />
+                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
+                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
+                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
+                                           backdrop-blur-sm backdrop-opacity-5
+                                           -ml-30 peer-valid:text-[20px] peer-valid:-translate-y-10'>
+                  Mobile Number
+                </span>
+              </label>
+
+
+              {/* EMAIL-ADDRESS */}
+
+              <label>
+                <input
+                  type="text"
+                  name="email"
+                  required
+                  className='p-2 rounded-md w-[575px] peer
+                                              bg-[#0b2440] border-opacity-50 outline-none 
+                                              focus:border-green peer text-gray-200 mb-4'
+                />
+                <span className='w-30 text-[16px] mb-4 text-slate-400 rounded-[5%]
+                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
+                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
+                                           backdrop-blur-sm backdrop-opacity-5
+                                           -ml-32 peer-valid:text-[20px] peer-valid:-translate-y-10'>
+                  Email Address
+                </span>
+              </label>
+
+              {/* NOTE */}
+
+              <label className="relative block">
+                <textarea
+                  name="note"
+                  required
+                  className="peer p-2 rounded-md w-[575px] h-20 align-top
+               bg-[#0b2440]  outline-none
+               focus:border-green text-gray-200 mb-4 resize-none"
+                ></textarea>
+
+                <span
+                  className="absolute left-3 top-2 text-[15px] text-slate-400 tracking-wide
+               pointer-events-none text-opacity-80 transition duration-200
+               peer-focus:text-green peer-focus:text-[12px] peer-focus:-translate-y-4
+               peer-valid:text-green peer-valid:text-[12px] peer-valid:-translate-y-4"
+                >
+                  Note
+                </span>
+              </label>
+
+            </div>
+          </form>
         </div>
       </div>
 
       {/* RIGHT SIDE: Order Summary */}
-      <div className="right-side col-span-6 ml-3 mr-5 my-10 p-5 rounded-2xl border
-      border-border bg-background backdrop-blur-sm">
-        <div className='w-[99%] bg-box mx-auto rounded-2xl border border-border'>
+      <div className="right-side col-span-6 ml-3 mr-5 my-10 p-5 rounded-2xl
+      bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]">
+
+        <div className='w-[99%] bg-box mx-auto rounded-2xl
+        bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]'>
           <h1 className='text-2xl p-5 '>Order Summery</h1>
 
           {cart.map((product, index) => (
@@ -65,7 +158,7 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
 
           <div className="order">
             <button className='mt-6 mb-5 mx-7 w-[90%] cursor-pointer bg-button text-gray-200 py-2
-                    rounded-xl hover:bg-[#11ae68] '>
+                    rounded-xl hover:bg-[#39557c] '>
               Order Now</button>
           </div>
         </div>

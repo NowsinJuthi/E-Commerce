@@ -9,6 +9,7 @@ import CheckOutPage from "./customer/component/CheckOut/CheckOutPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./customer/component/LoginPage/LoginPage";
+import Registration from "./customer/component/Registratiob/Registration";
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
             <Route path="/uniqbd/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
-            <Route path="/log-in" element={<LoginPage cart={cart} setCart={setCart} />} />
+            <Route path="/log-in" element={<LoginPage />} />
+            <Route path="/registration" element={<Registration />} />
           </Routes>
           <ToastContainer
             position="top-right"
