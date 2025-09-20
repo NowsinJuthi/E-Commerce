@@ -51,11 +51,11 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                 ) : (
 
                     <div className="main py-3 text-gray-200
-                                       bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]
+                                       bg-boxbg backdrop-blur-sm drop-shadow-lg
                                        rounded-[10px] text-center">
 
                         <div className="All py-5 w-[60%] mx-auto rounded-[10px] pt-5 p-10 mt-3
-                        bg-box shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+                        bg-box drop-shadow-lg">
                             <h1 className='text-3xl pb-3'>Shopping Cart</h1>
                             <hr className='text-gray-600 pb-5' />
 

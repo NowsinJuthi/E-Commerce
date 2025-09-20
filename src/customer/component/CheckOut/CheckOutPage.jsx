@@ -9,7 +9,7 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
     <div className="main grid grid-cols-12 text-gray-200">
       {/* LEFT SIDE: Customer Info */}
       <div className="left-side col-span-6 mr-3 ml-5 my-10 p-5 rounded-2xl
-       bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+       bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
         <div className="all-info">
           <h1 className='text-2xl pb-2'>Customer Information</h1>
           <hr className='text-gray-600' />
@@ -127,10 +127,10 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
 
       {/* RIGHT SIDE: Order Summary */}
       <div className="right-side col-span-6 ml-3 mr-5 my-10 p-5 rounded-2xl
-      bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]">
+      bg-boxbg backdrop-blur-sm drop-shadow-lg">
 
-        <div className='w-[99%] bg-box mx-auto rounded-2xl
-        bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]'>
+        <div className='w-[99%] mx-auto rounded-2xl
+        bg-box drop-shadow-lg'>
           <h1 className='text-2xl p-5 '>Order Summery</h1>
 
           {cart.map((product, index) => (

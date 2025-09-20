@@ -32,10 +32,9 @@ const TopupPage = ({ cart, setCart }) => {
 
         
       <div className="transparents bg-imgbg pt-6">
-        <div className="main bg-white/8 backdrop-blur-sm rounded-2xl mx-5 
+        <div className="main bg-boxbg backdrop-blur-sm rounded-2xl mx-5 
              shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
-          <div className="top-part grid grid-cols-12 p-3 rounded-xl
-           ">
+          <div className="top-part grid grid-cols-12 p-3 rounded-xl">
             <div className="img col-span-4 p-5 ">
               <img src={product.img} alt={product.productTitle} />
             </div>

@@ -62,13 +62,14 @@ const Package = ({ cart, setCart }) => {
 
 
                 <div className="left grid col-span-6 grid-cols-2 gap-4 pb-10 pt-4 px-4 mt-8 
-                rounded-2xl mb-36 bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+                rounded-2xl mb-36 bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
                     {selectedProduct.product &&
                         selectedProduct.product.map((prod, index) => (
                             <label
                                 key={index}
-                                className="group relative rounded-xl shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)] 
-                                           bg-box cursor-pointer transition-all hover:shadow-md
+                                className="group relative rounded-xl shadow-md bg-box backdrop-blur-5xl
+                                           hover:shadow-xl drop-shadow-lg overflow-hidden
+                                          cursor-pointer transition-all
                                          hover:!bg-[#1e2f44] items-center
                                          has-[:checked]:!bg-[#1e2f44] has-[:checked]:border-button"
                             >
@@ -96,7 +97,7 @@ const Package = ({ cart, setCart }) => {
                                             <img src={selectedProduct.productImg} className="text-sm font-medium text-gray-600 mt-1 group-has-checked:text-gray-200" />
                                         )}
                                     </div>
-                                    <div className="package col-span-6 pl-3 pt-4">
+                                    <div className="package col-span-6 pl-3 pt-7">
                                         <span className="text-gray-200 text-md font-semibold">{prod}</span>
                                     </div>
                                     <div className="price col-span-4 pl-6 pt-3">
@@ -113,7 +114,7 @@ const Package = ({ cart, setCart }) => {
 
                 {/* Right Side */}
                 <div className="right col-span-6 mb-5 rounded-2xl p-6 mt-8 ml-7
-                 bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]">
+                 bg-boxbg backdrop-blur-sm drop-shadow-lg">
 
                     {selectedProduct.categorys === "games to up" && (
                         <div className="game-id text-gray-200 grid grid-cols-12 items-center gap-2 mb-5">
@@ -121,7 +122,7 @@ const Package = ({ cart, setCart }) => {
                                 <input
                                     required
                                     className='p-2 rounded-[7px] w-[550px]
-                                               bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)] outline-none 
+                                               bg-box drop-shadow-lg outline-none 
                                               focus:border-green peer text-gray-200'
                                 />
                                 <span className='absolute left-1/4 -mt-9 w-30 text-xl text-slate-200 rounded-[5%] backdrop-blur-md pl-5
@@ -141,7 +142,7 @@ const Package = ({ cart, setCart }) => {
                     <div className="main grid">
                         {/* Quantity Selector */}
                         <div className="quantity grid grid-cols-12 col-span-2 pb-6 pt-5 pl-6
-                         bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]
+                         bg-box drop-shadow-lg
                           rounded-[10px]">
                             <div className="quty col-span-9">
                                 <p className="text-gray-200 pt-1.5">Quantity</p>
@@ -164,7 +165,7 @@ const Package = ({ cart, setCart }) => {
 
                         {/* Order Summary */}
                         <div className="order-summery col-span-2 rounded-[10px] p-5 mt-5
-                         bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)]">
+                         bg-box drop-shadow-lg">
                             <h1 className="text-gray-200 pb-3">Order Summary</h1>
                             <hr className="text-gray-500 pt-5" />
                             <h1 className="text-gray-200 text-sm">

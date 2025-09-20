@@ -6,7 +6,7 @@ const Registration = () => {
         <>
             <div className="main">
 
-                <form className='bg-box backdrop-blur-md rounded-2xl w-[40%] mx-auto my-10 py-5' action=''>
+                <form className='bg-boxbg backdrop-blur-md rounded-2xl w-[40%] mx-auto my-10 py-5' action=''>
                     <h1 className='text-4xl font-serif  text-green text-center text-gray-200 pb-2'>Registration</h1>
                     <hr className='text-gray-600 w-[60%] mx-auto'/>
                     <div className="username pb-3 text-center pt-10">

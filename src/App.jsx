@@ -19,12 +19,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover bg-imgbg" >
-        <div className="transparents max-w-screen ">
+      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover bg-boxbg" >
+        <div className="transparents max-w-screen bg-box">
           <Navigation cart={cart} setCart={setCart} />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/uniqbd/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
+            <Route path="/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
             <Route path="/log-in" element={<LoginPage />} />

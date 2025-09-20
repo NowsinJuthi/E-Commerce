@@ -55,7 +55,7 @@ const GiftCard = () => {
 
     return (
         <div className="slider-container w-full px-5 py-5">
-      <div className="transparents pt-6 pb-5 px-4 mb-5 rounded-xl drop-shadow-lg bg-box backdrop-blur-8xl">
+      <div className="transparents pt-6 pb-5 px-4 mb-5 rounded-xl drop-shadow-lg bg-boxbg backdrop-blur-8xl">
         <h1 className="text-3xl font-bold text-white mb-3 border-l-4 border-gray-400 pl-3">
           Gift Card
         </h1>
@@ -63,11 +63,11 @@ const GiftCard = () => {
         <Slider {...settings}>
           {
           giftCard.map((product) => (
-            <Link to={`/uniqbd/${product.title}`} key={product.id}>
+            <Link to={`/${product.title}`} key={product.id}>
               <div
                 className="main p-2 group transition-all duration-300 
                 hover:scale-105">
-                <div className="rounded-xl shadow-md bg-box backdrop-blur-5xl
+                <div className="rounded-xl shadow-md bg-box 
                   hover:shadow-xl drop-shadow-lg overflow-hidden">
                   <img
                     src={product.img}
