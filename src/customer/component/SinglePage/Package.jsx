@@ -62,7 +62,7 @@ const Package = ({ cart, setCart }) => {
 
 
                 <div className="left grid col-span-6 grid-cols-2 gap-4 pb-10 pt-4 px-4 mt-8 
-                rounded-2xl mb-36 bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+                rounded-2xl mb-36  shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
                     {selectedProduct.product &&
                         selectedProduct.product.map((prod, index) => (
                             <label
@@ -70,8 +70,8 @@ const Package = ({ cart, setCart }) => {
                                 className="group relative rounded-xl shadow-md bg-box backdrop-blur-5xl
                                            hover:shadow-xl drop-shadow-lg overflow-hidden
                                           cursor-pointer transition-all
-                                         hover:!bg-[#1e2f44] items-center
-                                         has-[:checked]:!bg-[#1e2f44] has-[:checked]:border-button"
+                                         hover:!bg-[#2c4d75] items-center
+                                         has-[:checked]:!bg-[#2c4d75] has-[:checked]:border-button"
                             >
 
 
