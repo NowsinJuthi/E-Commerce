@@ -54,7 +54,7 @@ const Navigation = ({ cart, setCart }) => {
             <ul className="col-span-6 flex justify-center gap-8 text-sm">
               <li><Link to="/" className="hover:text-green">HOME</Link></li>
               <li><Link to="/git-card" className="hover:text-green">GIFT CARD</Link></li>
-              <li><Link to="/git-card" className="hover:text-green">GAMES TOP UP</Link></li>
+              <li><Link to="/games-top-up" className="hover:text-green">GAMES TOP UP</Link></li>
               <li><Link to="/shop" className="hover:text-green">SHOP</Link></li>
               <li><Link to="/contact" className="hover:text-green">CONTACT US</Link></li>
             </ul>

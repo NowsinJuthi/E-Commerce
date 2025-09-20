@@ -141,7 +141,12 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
 
                 <div className="id col-span-8 grid grid-cols-6">
                   <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
-                  <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
+                  {
+                    product.categorys === "games to up" && (
+                      <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
+                    )
+                  }
+
                 </div>
 
                 <div className="buy-info col-span-4">

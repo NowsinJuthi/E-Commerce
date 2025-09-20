@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./customer/component/HomePage/MainPage";
 import Navigation from "./customer/component/Navbar/Navigation";
 import Footer from "./customer/component/Footer/Footer";
-import TopupPage from "./customer/component/SinglePage/TopupPage";
 import { useState } from "react";
 import CartPage from "./customer/component/AddToCart/CartPage";
 import CheckOutPage from "./customer/component/CheckOut/CheckOutPage";
@@ -10,6 +9,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./customer/component/LoginPage/LoginPage";
 import Registration from "./customer/component/Registratiob/Registration";
+import GiftCard from "./customer/component/GiftCardPage/GiftCard";
+import GameTopupPage from "./customer/component/GameTopUpPage/GameTopupPage";
+import TopupPage from "./customer/component/SinglePage/TopUpPage";
+import Shop from "./customer/component/ShopPage/Shop";
+import ContactUs from "./customer/component/ContactPage/ContactUs";
 
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
             <Route path="/log-in" element={<LoginPage />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/git-card" element={<GiftCard />} />
+            <Route path="/games-top-up" element={<GameTopupPage />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/contact" element={<ContactUs />} />
           </Routes>
           <ToastContainer
             position="top-right"
@@ -42,10 +50,10 @@ function App() {
             pauseOnHover
             theme="light"
           />
-           <Footer />
+          <Footer />
         </div>
       </div>
-     
+
 
     </BrowserRouter>
   )
