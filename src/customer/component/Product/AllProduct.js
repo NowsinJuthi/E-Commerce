@@ -12,6 +12,7 @@ export const allProduct = [
     product: ["$5", "$10", "$25", "$50", "$100"],
     productPrice: ["580 TK", "1150 TK", "2850 TK", "5700 TK", "11400 TK"],
     bgimg: "/images/bg-itunes.jpg",
+    description: "Buy iTunes Gift Cards to enjoy apps, music, movies, and subscriptions on Apple devices."
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ export const allProduct = [
     product: ["$10", "$20", "25$","$50", "$100"],
     productPrice: ["950 TK", "1850 TK", "2170 TK","4650 TK", "9300 TK"],
     bgimg: "/images/bg-playstation.jpg",
+    description: "PlayStation Gift Cards let you buy games, add-ons, and subscriptions from the PlayStation Store."
   },
   {
     id: 3,
@@ -37,9 +39,10 @@ export const allProduct = [
     price: "600TK - 97989TK",
     discountPrice: "550TK - 90000TK",
     stock: 40,
-    product: ["1 Month", "3 Months", "3 Months","6 Months", "12 Months"],
-    productPrice: ["550 TK", "1600 TK", "1600 TK","3000 TK", "5800 TK"],
+    product: ["1 Month", "3 Months","6 Months", "12 Months"],
+    productPrice: ["550 TK", "1600 TK","3000 TK", "5800 TK"],
     bgimg: "/images/bg-netflix.jpg",
+    description: "Get access to unlimited movies, TV shows, and originals with a Netflix subscription."
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ export const allProduct = [
     product: ["$5", "$10", "$25", "$50", "$100"],
     productPrice: ["600 TK", "1150 TK", "2800 TK", "5600 TK", "11200 TK"],
     bgimg: "/images/bg-visa.jpg",
+    description: "VISA / Master Cards can be used for global online shopping and subscriptions."
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ export const allProduct = [
     product: ["$5", "$10", "$20", "$50", "$100"],
     productPrice: ["580 TK", "1150 TK", "2200 TK", "5600 TK", "11200 TK"],
     bgimg: "/images/bg-steam.jpg",
+    description: "Steam Gift Cards are perfect for buying PC games, DLCs, and wallet balance."
   },
   {
     id: 6,
@@ -82,20 +87,7 @@ export const allProduct = [
     product: ["$5", "$10", "$25", "$50", "$100"],
     productPrice: ["600 TK", "1150 TK", "2850 TK", "5700 TK", "11400 TK"],
     bgimg: "/images/bg-amazon.jpg",
-  },
-  {
-    id: 7,
-    categorys: "gift card",
-    categoryId: 102,
-    img: "/images/Amazon.png",
-    title: "amazon-gift-card",
-    productTitle: "Amazon Gift Card",
-    price: "600TK - 78788TK",
-    discountPrice: "580TK - 76000TK",
-    stock: 130,
-    product: ["$5", "$10", "$25", "$50", "$100"],
-    productPrice: ["600 TK", "1150 TK", "2850 TK", "5700 TK", "11400 TK"],
-    bgimg: "/images/bg-amazon.jpg",
+    description: "Amazon Gift Cards let you shop millions of items including books, gadgets, and more."
   },
   {
     id: 8,
@@ -110,6 +102,7 @@ export const allProduct = [
     product: ['60 UC', '120 UC', '180 UC', '325 UC', '385 UC'],
     productPrice: ['115 TK', '258 TK', '350 TK', '575 TK', '690 TK'],
     bgimg: "/images/bg.jpg",
+    description: "Top up PUBG Mobile UC instantly and buy skins, outfits, and battle passes."
   },
   {
     id: 9,
@@ -124,6 +117,7 @@ export const allProduct = [
     product: ["80 CP", "160 CP", "420 CP", "880 CP", "2400 CP", "5000 CP"],
     productPrice: ["150 TK", "280 TK", "720 TK", "1250 TK", "3250 TK", "6500 TK"],
     bgimg: "/images/bg-duty.jpg",
+    description: "Recharge COD Mobile CP to unlock weapons, skins, and premium battle passes."
   },
   {
     id: 10,
@@ -137,7 +131,8 @@ export const allProduct = [
     stock: 85,
     product: ["500 Gems", "1200 Gems", "2500 Gems", "6500 Gems", "14000 Gems"],
     productPrice: ["550 TK", "1200 TK", "2400 TK", "6200 TK", "13500 TK"],
-    bgimg: "/images/bg-clan.jpg"
+    bgimg: "/images/bg-clan.jpg",
+    description: "Purchase Clash of Clans Gems to build faster and upgrade your village."
   },
   {
     id: 11,
@@ -145,13 +140,14 @@ export const allProduct = [
     categoryId: 101,
     img: "/images/Genshin-Impact.png",
     title: "genshin-impact",
-    productTitle: "Genshin-Impact",
+    productTitle: "Genshin Impact",
     price: "600TK - 78788TK",
     discountPrice: "570TK - 75000TK",
     stock: 90,
     product: ["60 Crystals", "300 Crystals", "980 Crystals", "1980 Crystals", "3280 Crystals", "6480 Crystals"],
     productPrice: ["600 TK", "1800 TK", "5200 TK", "10500 TK", "17500 TK", "34000 TK"],
-    bgimg: "/images/bg-genshin.jpg"
+    bgimg: "/images/bg-genshin.jpg",
+    description: "Recharge Genesis Crystals in Genshin Impact to buy Primogems and character skins."
   },
   {
     id: 12,
@@ -165,7 +161,8 @@ export const allProduct = [
     stock: 65,
     product: ["500 FIFA Points", "1050 FIFA Points", "2200 FIFA Points", "5750 FIFA Points", "12000 FIFA Points"],
     productPrice: ["600 TK", "1150 TK", "2300 TK", "5800 TK", "11800 TK"],
-    bgimg: "/images/bg-fifa.jpg"
+    bgimg: "/images/bg-fifa.jpg",
+    description: "Buy FIFA Mobile Points to build your dream squad and unlock premium rewards."
   },
   {
     id: 13,
@@ -179,7 +176,8 @@ export const allProduct = [
     stock: 55,
     product: ["80 Gems", "170 Gems", "360 Gems", "950 Gems", "2000 Gems"],
     productPrice: ["600 TK", "1150 TK", "2300 TK", "5800 TK", "11800 TK"],
-    bgimg: "/images/bg-brawl.jpg"
+    bgimg: "/images/bg-brawl.jpg",
+    description: "Top up Brawl Stars Gems and unlock new brawlers, skins, and special offers."
   },
   {
     id: 14,
@@ -193,7 +191,8 @@ export const allProduct = [
     stock: 10,
     product: ["80 Gems", "170 Gems", "360 Gems", "950 Gems", "2000 Gems"],
     productPrice: ["600 TK", "1150 TK", "2300 TK", "5800 TK", "11800 TK"],
-    bgimg: "/images/bg-royal.jpg"
+    bgimg: "/images/bg-royal.jpg",
+    description: "Recharge Clash Royale Gems to upgrade cards, unlock chests, and buy exclusive items."
   },
   {
     id: 15,
@@ -207,6 +206,7 @@ export const allProduct = [
     stock: 130,
     product: ["60 Credits", "300 Credits", "980 Credits", "1980 Credits", "3280 Credits", "6480 Credits"],
     productPrice: ["600 TK", "1800 TK", "5200 TK", "10500 TK", "17500 TK", "34000 TK"],
-    bgimg: "/images/bg-human.jpg"
+    bgimg: "/images/bg-human.jpg",
+    description: "Top up Once Human Credits to enhance gameplay and unlock premium features."
   }
 ];

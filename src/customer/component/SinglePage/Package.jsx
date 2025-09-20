@@ -12,12 +12,14 @@ const Package = ({ cart, setCart }) => {
     const [selectedPackageIndex, setSelectedPackageIndex] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const navigate = useNavigate();
+    const [playerId, setPlayerId] = useState("");
 
     useEffect(() => {
         const product = allProduct.find(item => item.title === title);
         setSelectedProduct(product || null);
         setSelectedPackageIndex(null);
         setQuantity(1);
+        setPlayerId("");
     }, [title]);
 
     if (!selectedProduct) return <p className="text-gray-200 p-6">No product found</p>;
@@ -31,6 +33,10 @@ const Package = ({ cart, setCart }) => {
             return;
         }
 
+        if (selectedProduct.categorys === "games to up" && !playerId.trim()) {
+            toast.error("⚠️ Please enter your Player ID first!", { autoClose: 1500 });
+            return;
+        }
         const selectedItem = {
             id: selectedProduct.id,
             img: selectedProduct.img,
@@ -38,7 +44,9 @@ const Package = ({ cart, setCart }) => {
             package: selectedProduct.product[selectedPackageIndex],
             quantity: quantity,
             productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
+            playerId: selectedProduct.categorys === "games to up" ? playerId : ""
         };
+
 
         const exists = cart.find(item => item.package === selectedItem.package);
 
@@ -62,7 +70,7 @@ const Package = ({ cart, setCart }) => {
 
 
                 <div className="left grid col-span-6 grid-cols-2 gap-4 pb-10 pt-4 px-4 mt-8 
-                rounded-2xl mb-36  shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+                rounded-2xl mb-36 bg-boxbg backdrop-blur-sm drop-shadow-lg">
                     {selectedProduct.product &&
                         selectedProduct.product.map((prod, index) => (
                             <label
@@ -71,8 +79,7 @@ const Package = ({ cart, setCart }) => {
                                            hover:shadow-xl drop-shadow-lg overflow-hidden
                                           cursor-pointer transition-all
                                          hover:!bg-[#2c4d75] items-center
-                                         has-[:checked]:!bg-[#2c4d75] has-[:checked]:border-button"
-                            >
+                                         has-[:checked]:!bg-[#2c4d75] has-[:checked]:border-button">
 
 
                                 <input
@@ -120,6 +127,8 @@ const Package = ({ cart, setCart }) => {
                         <div className="game-id text-gray-200 grid grid-cols-12 items-center gap-2 mb-5">
                             <label>
                                 <input
+                                    value={playerId}
+                                    onChange={(e) => setPlayerId(e.target.value)}
                                     required
                                     className='p-2 rounded-[7px] w-[550px]
                                                bg-box drop-shadow-lg outline-none 
@@ -139,6 +148,9 @@ const Package = ({ cart, setCart }) => {
                             </label>
                         </div>
                     )}
+
+
+
                     <div className="main grid">
                         {/* Quantity Selector */}
                         <div className="quantity grid grid-cols-12 col-span-2 pb-6 pt-5 pl-6
@@ -180,7 +192,9 @@ const Package = ({ cart, setCart }) => {
                                 selectedProduct={selectedProduct}
                                 selectedPackageIndex={selectedPackageIndex}
                                 quantity={quantity}
+                                playerId={playerId}
                             />
+
                             <button
                                 onClick={AddToCart}
                                 className="mt-6 w-full cursor-pointer 

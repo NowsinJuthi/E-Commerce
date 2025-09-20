@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Topup } from "../Product/TopUp.js";
 import Package from "./Package.jsx";
 import { allProduct } from "../Product/AllProduct.js";
+import Description from "../Description/Description.jsx";
 
 const TopupPage = ({ cart, setCart }) => {
   const { title } = useParams();
@@ -25,25 +26,18 @@ const TopupPage = ({ cart, setCart }) => {
 
   return (
     <div
-      className="top bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${product.bgimg || "/images/bg.jpg"})`,
-      }}>
+      className="top bg-cover bg-center">  
+      <div className="transparents ">
+        <div className="color pt-5">
 
-        
-      <div className="transparents  bg-box">
-
-
-        <div className="color bg-boxbg pt-5">
-
-          <div className="main backdrop-blur-sm rounded-2xl mx-5 
-             shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)] bg-boxbg">
+          <div className="main rounded-2xl mx-5 
+             backdrop-blur-sm drop-shadow-lg bg-boxbg">
           <div className="top-part grid grid-cols-12 p-3 rounded-xl">
             <div className="img col-span-4 p-5 ">
               <img src={product.img} alt={product.productTitle} />
             </div>
             <div className="Title col-span-8 pt-28 pl-14">
-              <h1 className="text-3xl text-gray-300 py-3">
+              <h1 className="text-3xl text-[#f1f1f1] py-3">
                 {product.productTitle}
               </h1>
               <span className=" text-gray-300">
@@ -59,7 +53,7 @@ const TopupPage = ({ cart, setCart }) => {
         </div>
         </div>
 
-        
+        <Description/>
       </div>
     </div>
   );

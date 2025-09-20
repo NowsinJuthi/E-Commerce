@@ -2,23 +2,30 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 
-const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, quantity }) => {
+const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, quantity, playerId }) => {
     const navigate = useNavigate();
+
 
     const handleCheckout = () => {
         if (!selectedProduct || selectedPackageIndex === null) {
             alert("Please select a package first!");
             return;
         }
+        if (selectedProduct.categorys === "games to up" && !playerId.trim()) {
+            toast.error("⚠️ Please enter your Player ID first!", { autoClose: 1500 });
+            return;
+        }
 
-        const selectedItem = {
-            id: selectedProduct.id,
-            img: selectedProduct.img,
-            productTitle: selectedProduct.productTitle,
-            package: selectedProduct.product[selectedPackageIndex],
-            quantity: quantity,
-            productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
-        };
+       const selectedItem = {
+    id: selectedProduct.id,
+    img: selectedProduct.img,
+    productTitle: selectedProduct.productTitle,
+    package: selectedProduct.product[selectedPackageIndex],
+    quantity: quantity,
+    productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
+    playerId: selectedProduct.categorys === "games to up" ? playerId : ""
+};
+
 
         const exists = cart.find(item => item.package === selectedItem.package);
         if (exists) {
@@ -32,7 +39,7 @@ const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, q
 
     return (
         <>
-           
+
             <button
                 onClick={handleCheckout}
                 className="mt-6 w-full cursor-pointer hover:bg-[#39557c] bg-button

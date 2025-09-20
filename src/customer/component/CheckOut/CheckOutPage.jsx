@@ -138,10 +138,17 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
               <hr className='text-gray-600 mx-5' />
 
               <div key={index} className="all-itmes p-5 text-sm grid grid-cols-12 items-center gap-2">
-                <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
-                <p className='col-span-3'>Price: {product.productPrice} TK</p>
-                <p className='col-span-3'>Quantity: {product.quantity}</p>
-                <p className='col-span-3 font-semibold'>SubTotal: {product.productPrice * product.quantity} TK</p>
+
+                <div className="id col-span-8 grid grid-cols-6">
+                  <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
+                  <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
+                </div>
+
+                <div className="buy-info col-span-4">
+                  <p className=' pb-3 text-[15px]'>Price: {product.productPrice} TK</p>
+                  <p className=' pb-3 text-[15px]'>Quantity: {product.quantity}</p>
+                  <p className='font-semibold pb-3 text-[15px]'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                </div>
               </div>
               <button
                 onClick={() => handleRemove(product.id)}

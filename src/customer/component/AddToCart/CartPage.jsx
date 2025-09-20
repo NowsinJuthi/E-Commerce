@@ -9,7 +9,7 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
     const navigate = useNavigate();
 
     const handleCheckout = () => {
-        if (!selectedProduct === null) {
+        if (selectedProduct === null) {
             alert("Please select a package first!");
             return;
         }
@@ -21,7 +21,9 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
             package: selectedProduct.product[selectedPackageIndex],
             quantity: quantity,
             productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
+            playerId: selectedProduct.categorys === "games to up" ? playerId : ""
         };
+
 
         const exists = cart.find(item => item.id === selectedItem.id);
         if (exists) {
@@ -65,6 +67,8 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                                     <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
                                         <img src={product.img} alt="" className="w-30 h-28 col-span-4 ml-10" />
                                         <p className='col-span-3'>Price: {product.productPrice} TK</p>
+                                        <p>Player ID: {product.playerId}</p>
+
                                         <p className='col-span-2'>Quantity: {product.quantity}</p>
                                         <p className='col-span-3 font-semibold'>SubTotal: {product.productPrice * product.quantity} TK</p>
                                     </div>
@@ -81,7 +85,7 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                                     Cart Totals: {subtotal} TK
                                 </h2>
                             </div>
-                            
+
                         </div>
 
                         <Link to={'/check-out'}>
