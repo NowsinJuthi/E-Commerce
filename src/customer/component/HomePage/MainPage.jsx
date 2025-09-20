@@ -7,7 +7,8 @@ import GiftCard from './HomeSectionCard/GiftCard';
 const MainPage = () => {
     return (
         <div className="col-span-12 w-full" >
-            <div className="transparents bg-bgtransparent/70 max-w-screen">
+            <div className="transparents bg-bgtransparent/70 
+            max-w-screen">
                 <Homeslider />
                 <GameTopUp/>
                 <GiftCard/>

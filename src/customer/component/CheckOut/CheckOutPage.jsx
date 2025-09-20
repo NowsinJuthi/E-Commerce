@@ -137,11 +137,11 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
             <>
               <hr className='text-gray-600 mx-5' />
 
-              <div key={index} className="all-itmes p-5 grid grid-cols-12 items-center gap-2">
+              <div key={index} className="all-itmes p-5 text-sm grid grid-cols-12 items-center gap-2">
                 <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
                 <p className='col-span-3'>Price: {product.productPrice} TK</p>
                 <p className='col-span-3'>Quantity: {product.quantity}</p>
-                <p className='col-span-3 font-semibold'>Total: {product.productPrice * product.quantity} TK</p>
+                <p className='col-span-3 font-semibold'>SubTotal: {product.productPrice * product.quantity} TK</p>
               </div>
               <button
                 onClick={() => handleRemove(product.id)}
@@ -151,8 +151,8 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
             </>
           ))}
           <div className="subtotal pt-5 text-right pr-10">
-            <h2 className="text-xl font-bold">
-              Subtotal: {subtotal} TK
+            <h2 className="text-lg font-bold">
+              Cart Totals: {subtotal} TK
             </h2>
           </div>
 

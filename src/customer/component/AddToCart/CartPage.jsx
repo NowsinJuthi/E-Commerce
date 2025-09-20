@@ -9,7 +9,7 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
     const navigate = useNavigate();
 
     const handleCheckout = () => {
-        if (!selectedProduct=== null) {
+        if (!selectedProduct === null) {
             alert("Please select a package first!");
             return;
         }
@@ -50,41 +50,45 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                     </div>
                 ) : (
 
-                    <div className="main border-gray-600 py-3 text-gray-200
-                                       bg-background backdrop-blur-sm
-                                       rounded-2xl text-center">
-                        <div className="All py-5 w-[50%] mx-auto">
-                            <h1 className='text-2xl pb-3'>Shopping Cart</h1>
+                    <div className="main py-3 text-gray-200
+                                       bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]
+                                       rounded-[10px] text-center">
+
+                        <div className="All py-5 w-[60%] mx-auto rounded-[10px] pt-5 p-10 mt-3
+                        bg-box shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
+                            <h1 className='text-3xl pb-3'>Shopping Cart</h1>
+                            <hr className='text-gray-600 pb-5' />
 
                             {cart.map((product, index) => (
                                 <>
-                                    <hr className='text-gray-600' />
 
                                     <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
-                                        <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
-                                        <p className='col-span-3'>Unit Price: {product.productPrice} TK</p>
+                                        <img src={product.img} alt="" className="w-30 h-28 col-span-4 ml-10" />
+                                        <p className='col-span-3'>Price: {product.productPrice} TK</p>
                                         <p className='col-span-2'>Quantity: {product.quantity}</p>
-                                        <p className='col-span-3 font-semibold'>Total: {product.productPrice * product.quantity} TK</p>
+                                        <p className='col-span-3 font-semibold'>SubTotal: {product.productPrice * product.quantity} TK</p>
                                     </div>
                                     <button
                                         onClick={() => handleRemove(product.id)}
                                         className='col-span-1 cursor-pointer hover:text-red-600 pb-4'>
                                         Remove
                                     </button>
+                                    <hr className='text-gray-700 pb-5 w-[90%] mx-auto' />
                                 </>
                             ))}
                             <div className="subtotal pt-5 text-right">
                                 <h2 className="text-xl font-bold">
-                                    Subtotal: {subtotal} TK
+                                    Cart Totals: {subtotal} TK
                                 </h2>
                             </div>
+                            
                         </div>
 
                         <Link to={'/check-out'}>
                             <button
                                 onClick={handleCheckout}
-                                className="mt-6 w-[50%] cursor-pointer bg-button text-gray-200 py-2
-                                rounded-xl hover:bg-[#39557c] transition">
+                                className="mt-6 w-[61%] cursor-pointer bg-button text-gray-200 py-2
+                                rounded-[10px] hover:bg-[#39557c] transition">
                                 Checkout
                             </button>
                         </Link>

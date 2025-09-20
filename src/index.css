@@ -6,14 +6,20 @@
             rgba(11, 36, 64, .05) 0%,
             rgba(42, 73, 108, 1) 1%,
             rgba(11, 36, 64, .05) 80%);
-    --background-box: rgb(52, 78, 113, 0.5);
-    /* --background-button: linear-gradient(to right, rgb(0, 222, 222), rgb(0, 102, 255)); */
-    --color-button: #1e2f44;
+
     --background-imgbg: linear-gradient(-60deg,
             rgba(11, 36, 65, 1) 0%,
             rgba(42, 73, 108, 1) 0%,
             rgba(11, 36, 65, 1) 70%);
+    --background-box: rgb(52, 78, 113, 0.5);
+    /* --background-button: linear-gradient(to right, rgb(0, 222, 222), rgb(0, 102, 255)); */
+    --color-button: #1e2f44;
+    /* --background-imgbg: linear-gradient(-60deg,
+            rgba(11, 36, 65, 1) 0%,
+            rgba(42, 73, 108, 1) 0%,
+            rgba(11, 36, 65, 1) 70%); */
 
+    --color-imgbg:  #1e3550;
     --background-nav: linear-gradient(5deg,
             rgba(11, 36, 64, .95) 0%,
             rgba(42, 73, 108, 1) 100%,
@@ -28,9 +34,9 @@
     background-color: var(--background-box);
 }
 
-.bg-imgbg {
-    background-image: var(--background-imgbg);
-}
+
+
+
 
 .bg-nav {
     background-image: var(--background-nav);

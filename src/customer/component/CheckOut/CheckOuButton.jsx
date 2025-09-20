@@ -36,7 +36,7 @@ const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, q
             <button
                 onClick={handleCheckout}
                 className="mt-6 w-full cursor-pointer hover:bg-[#39557c] bg-button
-                 text-gray-200 py-2 rounded-xl hover:bg-hover transition"
+                 text-gray-200 py-2 rounded-[10px] hover:bg-hover transition"
             >
                 Buy Now
             </button>

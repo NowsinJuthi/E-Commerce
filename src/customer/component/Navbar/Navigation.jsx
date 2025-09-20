@@ -42,7 +42,7 @@ const Navigation = ({ cart, setCart }) => {
           </div>
 
           {/* Desktop */}
-          <div className="hidden lg:grid grid-cols-12 items-center py-3 shadow-md">
+          <div className="hidden lg:grid grid-cols-12 items-center py-4 shadow-md">
             {/* Logo */}
             <div className="col-span-3 ml-4">
               <Link to="/">

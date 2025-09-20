@@ -60,22 +60,24 @@ const Package = ({ cart, setCart }) => {
             <div className="transparents grid grid-cols-12 px-5">
                 {/* Left Side */}
 
-              
+
                 <div className="left grid col-span-6 grid-cols-2 gap-4 pb-10 pt-4 px-4 mt-8 
                 rounded-2xl mb-36 bg-white/8 backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
                     {selectedProduct.product &&
                         selectedProduct.product.map((prod, index) => (
                             <label
                                 key={index}
-                                className="group relative rounded-xl shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)] bg-box
-                                           cursor-pointer transition-all hover:shadow-md hover:border-button
-                                           hover:bg-hover items-center
-                                           peer-checked:bg-hover peer-checked:border-button  ">
+                                className="group relative rounded-xl shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)] 
+                                           bg-box cursor-pointer transition-all hover:shadow-md
+                                         hover:!bg-[#1e2f44] items-center
+                                         has-[:checked]:!bg-[#1e2f44] has-[:checked]:border-button"
+                            >
+
 
                                 <input
                                     type="radio"
                                     name="size"
-                                    className="absolute inset-0 appearance-none focus:outline-none"
+                                    className="absolute inset-0 appearance-none focus:outline-none peer sr-only"
                                     onChange={() => {
                                         if (selectedPackageIndex === index) {
 
@@ -94,8 +96,8 @@ const Package = ({ cart, setCart }) => {
                                             <img src={selectedProduct.productImg} className="text-sm font-medium text-gray-600 mt-1 group-has-checked:text-gray-200" />
                                         )}
                                     </div>
-                                    <div className="package col-span-6 pl-3 pt-5">
-                                        <span className="text-gray-200 text-lg font-semibold">{prod}</span>
+                                    <div className="package col-span-6 pl-3 pt-4">
+                                        <span className="text-gray-200 text-md font-semibold">{prod}</span>
                                     </div>
                                     <div className="price col-span-4 pl-6 pt-3">
                                         {selectedProduct.productPrice && (
@@ -115,21 +117,25 @@ const Package = ({ cart, setCart }) => {
 
                     {selectedProduct.categorys === "games to up" && (
                         <div className="game-id text-gray-200 grid grid-cols-12 items-center gap-2 mb-5">
-                             <label>
-                            <input
-                                required
-                                className='p-2 rounded-[7px] w-[550px]
+                            <label>
+                                <input
+                                    required
+                                    className='p-2 rounded-[7px] w-[550px]
                                                bg-box shadow-[0_-0.5px_7px_rgba(0,0,0,0.4)] outline-none 
                                               focus:border-green peer text-gray-200'
-                            />
-                            <span className='w-30 text-xl text-slate-200 rounded-[5%] backdrop-blur-md pl-5
-                                            left-1/4 -mt-9 tracking-wide peer-focus:text-green pointer-events-none
-                                            peer-focus:text-sm peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
-                                           backdrop-opacity-5
-                                           -ml-30 mr-30 peer-vaild:text-sm peer-valid:-translate-y-5'>
-                                Player ID
-                            </span>
-                        </label>
+                                />
+                                <span className='absolute left-1/4 -mt-9 w-30 text-xl text-slate-200 rounded-[5%] backdrop-blur-md pl-5
+                                             tracking-wide pointer-events-none transition-all duration-200
+                                            peer-focus:text-green -ml-30 mr-30
+                                            peer-focus:-translate-y-4 text-opacity-80  
+                                            backdrop-opacity-5
+                                            peer-focus:text-green-500 peer-focus:text-sm 
+                                           peer-valid:-translate-y-5 text-opacity-80'>
+                                    Player ID
+                                </span>
+
+
+                            </label>
                         </div>
                     )}
                     <div className="main grid">
@@ -143,17 +149,17 @@ const Package = ({ cart, setCart }) => {
                             <div className="button grid grid-cols-12 col-span-3 text-gray-300 
                                    bg-white/ backdrop-blur-sm shadow-[0_-0.5px_5px_rgba(0,0,0,0.3)] mr-5 rounded-2xl">
                                 <div className="minus bg-box p-1 col-span-4 rounded-3xl">
-                                    <LiaMinusSolid onClick={() => handleQuantityChange(-1)} 
-                                    className="cursor-pointer ml-0.5 text-xl text-white hover:text-border border-1 border-border rounded-[50%]" />
+                                    <LiaMinusSolid onClick={() => handleQuantityChange(-1)}
+                                        className="cursor-pointer ml-0.5 text-xl text-white hover:text-border border-1 border-border rounded-[50%]" />
                                 </div>
                                 <span className="text-center col-span-4">{quantity}</span>
                                 <div className="minus bg-box p-1 col-span-4 rounded-3xl">
-                                   <LiaPlusSolid onClick={() => handleQuantityChange(+1)} 
-                                   className="ml-1 cursor-pointer text-xl text-white hover:text-border border-1 border-border rounded-[50%]" />
+                                    <LiaPlusSolid onClick={() => handleQuantityChange(+1)}
+                                        className="ml-1 cursor-pointer text-xl text-white hover:text-border border-1 border-border rounded-[50%]" />
                                 </div>
                             </div>
 
-                            
+
                         </div>
 
                         {/* Order Summary */}

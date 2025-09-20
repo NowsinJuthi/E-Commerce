@@ -51,8 +51,8 @@ const GameTopUp = () => {
   };
 
   return (
-    <div className="slider-container w-full px-5 py-5 bg-imgbg">
-      <div className="transparents pt-6 pb-10 px-4 rounded-xl bg-box backdrop-blur-sm">
+    <div className="slider-container w-full px-5 py-5 g">
+      <div className="transparents pt-6 pb-5 px-4 rounded-xl bg-box backdrop-blur-sm">
         <h1 className="text-3xl font-bold text-white mb-3 border-l-4 border-gray-400 pl-3">
           Game Top Up
         </h1>
