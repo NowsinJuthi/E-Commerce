@@ -70,10 +70,11 @@ const GameTopUp = () => {
                     className="w-full object-contain p-2 
                     group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="p-2 text-center">
-                    <p className="text-sm font-medium text-white truncate">
+                  <div className="p-2 text-center text-gray-200">
+                    <p className="font-medium truncate">
                       {product.productTitle}
                     </p>
+                    <p className="text-sm">{product.price}</p>
                   </div>
                 </div>
               </div>

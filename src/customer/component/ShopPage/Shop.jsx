@@ -12,7 +12,7 @@ const Shop = () => {
                         <div key={index} className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden">
 
                             <Link to={`/${products.title}`}>
-                                <div className="h-40 flex items-center justify-center bg-gray-700">
+                                <div className="h-60 flex items-center justify-center bg-box">
                                     <img
                                         src={products.img}
                                         alt={products.productTitle}

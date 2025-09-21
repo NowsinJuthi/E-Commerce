@@ -24,10 +24,7 @@ const Navigation = ({ cart, setCart }) => {
 
           {/* Mobile */}
           <div className="lg:hidden relative">
-            <GiHamburgerMenu
-              onClick={() => setIsOpen(!isOpen)}
-              className="h-7 w-7 ml-3 cursor-pointer"
-            />
+            <GiHamburgerMenu onClick={() => setIsOpen(!isOpen)} className="h-7 w-7 ml-3 cursor-pointer" />
             {isOpen && (
               <ul className="absolute top-12 left-0 w-full bg-black text-white p-4 space-y-3">
                 <li><Link to="/">HOME</Link></li>
@@ -70,12 +67,52 @@ const Navigation = ({ cart, setCart }) => {
               </Link>
 
               <div className="relative">
-                <Link to={'/cart'}>
-                  <ShoppingBagIcon className="h-6 w-6 text-white hover:text-website" />
-                  <span className="absolute -top-2 -right-2 px-1.5 py-0.5 text-xs font-medium text-white bg-red-500 rounded-full">
-                    {cart.length}
-                  </span>
-                </Link>
+                {/* Bag Icon */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="relative p-2 rounded-full hover:bg-gray-800"
+                >
+                  <ShoppingBagIcon className="h-7 w-7 text-white hover:text-website transition" />
+
+                  {/* Cart Count */}
+                  {cart.length > 0 && (
+                    <span className="absolute -top-[1px] -right-1 px-2 text-sm font-medium
+                     text-white bg-red-500 rounded-full shadow">
+                      {cart.length}
+                    </span>
+                  )}
+                </button>
+
+                {/* Dropdown / Sidebar */}
+                {isOpen && (
+                  <div className="absolute -right-[53px] mt-3 h-screen w-96 bg-gray-900 rounded-xl shadow-lg p-4
+                   text-white z-50">
+                    <h3 className="font-semibold border-b border-gray-700 pb-2 mb-2">
+                      Shopping Cart
+                    </h3>
+
+                    {cart.length === 0 ? (
+                      <p className="text-gray-400 text-sm">Your cart is empty</p>
+                    ) : (
+                      <ul className="space-y-2">
+                        {cart.map((item, index) => (
+                          <li
+                            key={index}
+                            className="flex justify-between items-center text-sm"
+                          >
+                            <span>{item.name}</span>
+                            <span className="font-medium">${item.price}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Checkout Button */}
+                    <button className="w-full mt-3 bg-website hover:bg-website/90 text-white py-2 rounded-lg transition">
+                      Checkout
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
