@@ -4,7 +4,7 @@ import Package from "./Package.jsx";
 import { allProduct } from "../Product/AllProduct.js";
 import Description from "../Description/Description.jsx";
 
-const TopUpPage = ({ cart, setCart }) => {
+const SingleMainPage = ({ cart, setCart }) => {
   const { title } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -58,4 +58,4 @@ const TopUpPage = ({ cart, setCart }) => {
   );
 };
 
-export default TopUpPage;
+export default SingleMainPage;
