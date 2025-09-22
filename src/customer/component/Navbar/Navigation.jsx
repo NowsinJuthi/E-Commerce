@@ -113,7 +113,7 @@ const Navigation = ({ cart, setCart }) => {
                 {/* Dropdown / Sidebar */}
                 <div
                   ref={cartRef}
-                  className={`fixed border-l border-dotted border-boxbg top-0 right-0 h-full w-[450px] bg-box shadow-lg p-4 text-white z-50
+                  className={`fixed border-l border-dotted border-boxbg top-0 right-0 h-full w-[450px] bg-boxbg shadow-lg p-4 text-white z-50
                                transform transition-transform duration-500
                              ${isOpen ? "translate-x-0" : "translate-x-full"}`}
                 >
@@ -134,14 +134,16 @@ const Navigation = ({ cart, setCart }) => {
 
                       {cart.map((product, index) => (
                         <>
-
                           <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2 text-xs">
 
                             <div className="left col-span-8 grid grid-cols-12">
                               <img src={product.img} alt="" className="w-20 h-20 ml-10 col-span-6" />
 
                               <div className="package col-span-6 pt-4">
-                                <p>{product.productTitle}</p>
+                                 
+                                  <p>{product.productTitle}</p>
+                             
+
                                 <p>{product.package}</p>
                                 {
                                   product.categorys === "games to up" && (
@@ -175,7 +177,7 @@ const Navigation = ({ cart, setCart }) => {
                   )}
 
                   <Link to={'/cart'}>
-                  <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
+                    <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
                       View Cart
                     </button>
                   </Link>

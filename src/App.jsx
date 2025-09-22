@@ -23,8 +23,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover bg-boxbg" >
-        <div className="transparents max-w-screen bg-box">
+      <div className="all col-span-12 w-full bg-no-repeat bg-center bg-cover bg-gray-900" >
+        <div className="transparents max-w-screen">
           <Navigation cart={cart} setCart={setCart} />
           <Routes>
             <Route path="/" element={<MainPage />} />
