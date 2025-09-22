@@ -65,18 +65,27 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                                 <>
 
                                     <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
-                                        <img src={product.img} alt="" className="w-30 h-28 col-span-4 ml-10" />
-                                        <p className='col-span-3'>Price: {product.productPrice} TK</p>
 
-                                        {
-                                            product.categorys === "games to up" && (
+                                        <div className="left col-span-8 grid grid-cols-12">
+                                            <img src={product.img} alt="" className="w-30 h-28 ml-10 col-span-3" />
+
+                                            <div className="package col-span-6 pt-4">
+                                                <p>{product.productTitle}</p>
+                                                <p>{product.package}</p>
+                                                {
+                                                    product?.categorys === "games to up" && (
+                                                        <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
+                                                    )
+                                                }
                                                 <p>Player ID: {product.playerId}</p>
-                                            )
-                                        }
+                                            </div>
+                                        </div>
 
-
-                                        <p className='col-span-2'>Quantity: {product.quantity}</p>
-                                        <p className='col-span-3 font-semibold'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                                        <div className="right col-span-4">
+                                            <p className='col-span-3'>Price: {product.productPrice} TK</p>
+                                            <p className='col-span-2'>Quantity: {product.quantity}</p>
+                                            <p className='col-span-3'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                                        </div>
                                     </div>
                                     <button
                                         onClick={() => handleRemove(product.id)}

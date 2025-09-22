@@ -7,11 +7,36 @@ import { GoClock } from "react-icons/go"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 import Topnav from './TopNav'
+import { useEffect, useRef } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 
 
 const Navigation = ({ cart, setCart }) => {
+  const cartRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false)
+  const subtotal = cart.reduce((acc, item) => acc + (item.productPrice * item.quantity), 0);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+
+
 
   return (
     <div className="sticky top-0 z-[50] 
@@ -66,54 +91,104 @@ const Navigation = ({ cart, setCart }) => {
                 </div>
               </Link>
 
+
+
+              {/* CART */}
               <div className="relative">
                 {/* Bag Icon */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="relative p-2 rounded-full hover:bg-gray-800"
+                  className="relative p-2 rounded-full hover:bg-gray-800 transform transition-transform duration-500"
                 >
                   <ShoppingBagIcon className="h-7 w-7 text-white hover:text-website transition" />
 
-                  {/* Cart Count */}
                   {cart.length > 0 && (
                     <span className="absolute -top-[1px] -right-1 px-2 text-sm font-medium
-                     text-white bg-red-500 rounded-full shadow">
+          text-white bg-red-500 rounded-full shadow">
                       {cart.length}
                     </span>
                   )}
                 </button>
 
                 {/* Dropdown / Sidebar */}
-                {isOpen && (
-                  <div className="absolute -right-[53px] mt-3 h-screen w-96 bg-gray-900 rounded-xl shadow-lg p-4
-                   text-white z-50">
-                    <h3 className="font-semibold border-b border-gray-700 pb-2 mb-2">
-                      Shopping Cart
-                    </h3>
-
-                    {cart.length === 0 ? (
-                      <p className="text-gray-400 text-sm">Your cart is empty</p>
-                    ) : (
-                      <ul className="space-y-2">
-                        {cart.map((item, index) => (
-                          <li
-                            key={index}
-                            className="flex justify-between items-center text-sm"
-                          >
-                            <span>{item.name}</span>
-                            <span className="font-medium">${item.price}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {/* Checkout Button */}
-                    <button className="w-full mt-3 bg-website hover:bg-website/90 text-white py-2 rounded-lg transition">
-                      Checkout
+                <div
+                  ref={cartRef}
+                  className={`fixed border-l border-dotted border-boxbg top-0 right-0 h-full w-[450px] bg-box shadow-lg p-4 text-white z-50
+                               transform transition-transform duration-500
+                             ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+                >
+                  {/* Header with Exit Button */}
+                  <div className="flex justify-between items-center border-b border-gray-700 pb-2 mb-">
+                    <h3 className="font-semibold text-3xl px-[94px] py-2 bg-boxbg rounded-lg">Shopping Cart</h3>
+                    <button
+                      onClick={() => setIsOpen(false)}
+                      className="p-1 rounded-full hover:bg-gray-800 bg-red-500">
+                      <XMarkIcon className="h-6 w-6 text-white" />
                     </button>
                   </div>
-                )}
+
+                  {cart.length === 0 ? (
+                    <p className="text-gray-400 text-sm">Your cart is empty</p>
+                  ) : (
+                    <ul className="bg-boxbg rounded-lg">
+
+                      {cart.map((product, index) => (
+                        <>
+
+                          <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2 text-xs">
+
+                            <div className="left col-span-8 grid grid-cols-12">
+                              <img src={product.img} alt="" className="w-20 h-20 ml-10 col-span-6" />
+
+                              <div className="package col-span-6 pt-4">
+                                <p>{product.productTitle}</p>
+                                <p>{product.package}</p>
+                                {
+                                  product.categorys === "games to up" && (
+                                    <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
+                                  )
+                                }
+                                <p>Player ID: {product.playerId}</p>
+                              </div>
+                            </div>
+
+                            <div className="right col-span-4">
+                              <p className='col-span-3'>Price: {product.productPrice} TK</p>
+                              <p className='col-span-2'>Quantity: {product.quantity}</p>
+                              <p className='col-span-3'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => handleRemove(product.id)}
+                            className='col-span-1 cursor-pointer hover:text-red-600 py-4 w-full max-auto'>
+                            Remove
+                          </button>
+                          <hr className='text-gray-700 pb-5 w-[90%] mx-auto' />
+                          <div className="subtotal pt-5 text-right pr-5 pb-5">
+                            <h2 className="text-xl font-bold">
+                              Cart Totals: {subtotal} TK
+                            </h2>
+                          </div>
+                        </>
+                      ))}
+                    </ul>
+                  )}
+
+                  <Link to={'/cart'}>
+                  <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
+                      View Cart
+                    </button>
+                  </Link>
+                  <Link to={'/check-out'}>
+                    <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
+                      Order Now
+                    </button>
+                  </Link>
+                </div>
               </div>
+
+
+
             </div>
           </div>
         </div>

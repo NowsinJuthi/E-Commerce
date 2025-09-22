@@ -1,6 +1,8 @@
 import React from 'react';
 
 const CheckOutPage = ({ cart, setCart, id, img }) => {
+
+
   const handleRemove = (id) => setCart(cart.filter(item => item.id !== id));
 
   const subtotal = cart.reduce((acc, item) => acc + (item.productPrice * item.quantity), 0);
@@ -133,33 +135,43 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
         bg-box drop-shadow-lg'>
           <h1 className='text-2xl p-5 '>Order Summery</h1>
 
+
           {cart.map((product, index) => (
             <>
-              <hr className='text-gray-600 mx-5' />
 
-              <div key={index} className="all-itmes p-5 text-sm grid grid-cols-12 items-center gap-2">
+              <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
 
-                <div className="id col-span-8 grid grid-cols-6">
-                  <img src={product.img} alt="" className="w-28 h-28 col-span-3" />
-                  {
-                    product.categorys === "games to up" && (
-                      <p className='col-span-3 pt-12 text-[14px]'>Player ID: {product.playerId}</p>
-                    )
-                  }
+                <div className="left col-span-8 grid grid-cols-12">
+                  <img src={product.img} alt="" className="w-30 h-28 ml-10 col-span-6" />
 
+                  <div className="package col-span-6 pt-4">
+                    <p>{product.productTitle}</p>
+                    <p>{product.package}</p>
+                    <div>
+                      {product.categorys === "games to up" && (
+                        <p className='col-span-3 pt-12 text-[14px]'>
+                          Player ID: {product.playerId}
+                        </p>
+                      )}
+                    </div>
+
+
+
+                  </div>
                 </div>
 
-                <div className="buy-info col-span-4">
-                  <p className=' pb-3 text-[15px]'>Price: {product.productPrice} TK</p>
-                  <p className=' pb-3 text-[15px]'>Quantity: {product.quantity}</p>
-                  <p className='font-semibold pb-3 text-[15px]'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                <div className="right col-span-4">
+                  <p className='col-span-3'>Price: {product.productPrice} TK</p>
+                  <p className='col-span-2'>Quantity: {product.quantity}</p>
+                  <p className='col-span-3'>SubTotal: {product.productPrice * product.quantity} TK</p>
                 </div>
-              </div>
+              </div >
               <button
                 onClick={() => handleRemove(product.id)}
-                className='col-span-1 cursor-pointer hover:text-red-600 pb-4 mx-auto w-[99%]'>
+                className='col-span-1 cursor-pointer hover:text-red-600 pb-4 max-auto w-full py-2'>
                 Remove
               </button>
+              <hr className='text-gray-700 pb-5 w-[90%] mx-auto' />
             </>
           ))}
           <div className="subtotal pt-5 text-right pr-10">
@@ -175,8 +187,10 @@ const CheckOutPage = ({ cart, setCart, id, img }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
 export default CheckOutPage;
+
+

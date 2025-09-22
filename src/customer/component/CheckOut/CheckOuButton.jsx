@@ -16,15 +16,15 @@ const CheckOuButton = ({ cart, setCart, selectedProduct, selectedPackageIndex, q
             return;
         }
 
-       const selectedItem = {
-    id: selectedProduct.id,
-    img: selectedProduct.img,
-    productTitle: selectedProduct.productTitle,
-    package: selectedProduct.product[selectedPackageIndex],
-    quantity: quantity,
-    productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
-    playerId: selectedProduct.categorys === "games to up" ? playerId : ""
-};
+        const selectedItem = {
+            id: selectedProduct.id,
+            img: selectedProduct.img,
+            productTitle: selectedProduct.productTitle,
+            package: selectedProduct.product[selectedPackageIndex],
+            quantity: quantity,
+            productPrice: parseInt(selectedProduct.productPrice[selectedPackageIndex]),
+            playerId: selectedProduct.categorys === "games to up" ? playerId : ""
+        };
 
 
         const exists = cart.find(item => item.package === selectedItem.package);
