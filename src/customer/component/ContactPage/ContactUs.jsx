@@ -37,7 +37,7 @@ const ContactUs = () => {
         </div>
 
         {/* Right Contact Cards */}
-        <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 backdrop-blur-sm drop-shadow-lg">
 
           {/* Location */}
           <div className="bg-box p-6 rounded-2xl flex flex-col items-center text-center hover:bg-gray-900/70 transition">

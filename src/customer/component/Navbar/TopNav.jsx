@@ -1,24 +1,33 @@
 import React from 'react';
-import { IoCallOutline } from "react-icons/io5"
-import { GoClock } from "react-icons/go"
+import { IoCallOutline } from "react-icons/io5";
+import { GoClock } from "react-icons/go";
 
 const Topnav = () => {
     return (
-        <>
-            <div className="sticky top-0 z-[50] bg-background shadow-md">
-                <div className="w-full">
-
-                    {/* Top Header */}
-                    <div className="text-white grid grid-cols-12 py-1">
-                        <h2 className="col-span-9 pl-5">Welcome To UniQbd</h2>
-                        <div className="col-span-3 grid grid-cols-2 text-sm">
-                            <div className="flex items-center gap-2"><GoClock /> 11AM - 1AM</div>
-                            <div className="flex items-center gap-2"><IoCallOutline /> 01777139777</div>
+        <div className="sticky top-0 z-[50] bg-background shadow-md">
+            <div className="w-full">
+                {/* Top Header */}
+                <div className="text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-2 py-2 px-4 text-sm sm:text-base">
+                    
+                    {/* Left side: Welcome */}
+                    <h2 className="col-span-1 md:col-span-1 lg:col-span-9 text-center md:text-left">
+                        Welcome To UniQbd
+                    </h2>
+                    
+                    {/* Right side: Contact info */}
+                    <div className="col-span-1 md:col-span-1 lg:col-span-3 flex flex-col sm:flex-row justify-center md:justify-end items-center gap-2 sm:gap-6">
+                        <div className="flex items-center gap-2">
+                            <GoClock className="text-lg" /> 
+                            <span>11AM - 1AM</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <IoCallOutline className="text-lg" /> 
+                            <span>01777139777</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

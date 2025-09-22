@@ -104,9 +104,11 @@ const Package = ({ cart, setCart }) => {
                                             <img src={selectedProduct.productImg} className="text-sm font-medium text-gray-600 mt-1 group-has-checked:text-gray-200" />
                                         )}
                                     </div>
-                                    <div className="package col-span-6 pl-3 pt-7">
+                                    <div className="package col-span-6 w-full py-8 text-center">
                                         <span className="text-gray-200 text-md font-semibold">{prod}</span>
                                     </div>
+
+
                                     <div className="price col-span-4 pl-6 pt-3">
                                         {selectedProduct.productPrice && (
                                             <span className="text-gray-200 text-sm font-medium mt-1">
@@ -120,21 +122,21 @@ const Package = ({ cart, setCart }) => {
                 </div>
 
                 {/* Right Side */}
-                <div className="right col-span-6 mb-5 rounded-2xl p-6 mt-8 ml-7
+                <div className="right col-span-6 mb-5 rounded-2xl p-6 mt-8 ml-7 
                  bg-boxbg backdrop-blur-sm drop-shadow-lg">
 
                     {selectedProduct.categorys === "games to up" && (
-                        <div className="game-id text-gray-200 grid grid-cols-12 items-center gap-2 mb-5">
-                            <label>
+                        <div className="game-id text-gray-200  items-center gap-2 mb-5">
+                            <label className='w-full'>
                                 <input
                                     value={playerId}
                                     onChange={(e) => setPlayerId(e.target.value)}
                                     required
-                                    className='p-2 rounded-[7px] w-[550px]
+                                    className='p-2 rounded-[7px]
                                                bg-box drop-shadow-lg outline-none 
-                                              focus:border-green peer text-gray-200'
+                                              focus:border-green peer text-gray-200 max-auto w-full'
                                 />
-                                <span className='absolute left-1/4 -mt-9 w-30 text-xl text-slate-200 rounded-[5%] backdrop-blur-md pl-5
+                                <span className='absolute left-1/4 mt-1 w-30 text-xl text-slate-200 rounded-[5%] backdrop-blur-md pl-5
                                              tracking-wide pointer-events-none transition-all duration-200
                                             peer-focus:text-green -ml-30 mr-30
                                             peer-focus:-translate-y-4 text-opacity-80  

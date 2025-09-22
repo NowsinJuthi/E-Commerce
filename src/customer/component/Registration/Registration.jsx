@@ -1,22 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const LoginPage = () => {
+const Registration = () => {
   return (
     <div className="main min-h-screen flex items-center justify-center px-4">
       <form
         className="bg-box backdrop-blur-md rounded-2xl 
-                   w-full max-w-md md:max-w-lg lg:max-w-xl
+                   w-full max-w-md md:max-w-lg lg:max-w-xl 
                    mx-auto p-6"
         action=""
       >
         <h1 className="text-3xl md:text-4xl font-serif text-green text-center text-gray-200 pb-2">
-          Log In
+          Registration
         </h1>
         <hr className="text-gray-600 w-3/5 mx-auto" />
 
+        {/* Name */}
+        <div className="relative mt-10">
+          <label className="block relative">
+            <input
+              required
+              type="text"
+              className="p-3 rounded-md w-full
+                         bg-button
+                         outline-none focus:border-green peer text-gray-200"
+            />
+            <span className="absolute left-3 top-3 text-[15px] text-slate-200 
+                             tracking-wide pointer-events-none
+                             peer-focus:text-green peer-focus:text-[12px] 
+                             peer-focus:-translate-y-3 peer-focus:top-1
+                             transition duration-200">
+              Name
+            </span>
+          </label>
+        </div>
+
         {/* Email */}
-        <div className="relative pb-3 pt-10 text-center">
+        <div className="relative mt-6">
           <label className="block relative">
             <input
               required
@@ -36,13 +56,13 @@ const LoginPage = () => {
         </div>
 
         {/* Password */}
-        <div className="relative pb-3 pt-5 text-center">
+        <div className="relative mt-6">
           <label className="block relative">
             <input
               required
               type="password"
               className="p-3 rounded-md w-full
-                         bg-button
+                         bg-button 
                          outline-none focus:border-green peer text-gray-200"
             />
             <span className="absolute left-3 top-3 text-[15px] text-slate-200 
@@ -55,34 +75,23 @@ const LoginPage = () => {
           </label>
         </div>
 
-        {/* Remember & Forgot */}
-        <div className="w-full flex justify-between items-center 
-                        text-gray-200 text-sm py-5">
-          <label className="flex items-center">
-            <input className="mr-2 accent-green" type="checkbox" /> Remember me
-          </label>
-          <a className="text-green hover:underline" href="">
-            Forgot password?
-          </a>
-        </div>
-
-        {/* Submit button */}
-        <div className="text-center">
+        {/* Submit */}
+        <div className="text-center mt-8">
           <button
             type="submit"
             className="w-full py-2 rounded-lg bg-button text-white font-medium 
                        hover:bg-green/80 transition"
           >
-            Log In
+            Register
           </button>
         </div>
 
-        {/* Registration */}
-        <div className="registration pt-6 text-center text-gray-200">
+        {/* Already have account */}
+        <div className="pt-6 text-center text-gray-200">
           <p>
-            Don’t have an account?{" "}
-            <Link to="/registration" className="text-green hover:underline">
-              Registration
+            Have an account?{" "}
+            <Link to="/log-in" className="text-green hover:underline">
+              Login
             </Link>
           </p>
         </div>
@@ -91,4 +100,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Registration;

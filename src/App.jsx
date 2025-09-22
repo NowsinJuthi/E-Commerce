@@ -8,7 +8,7 @@ import CheckOutPage from "./customer/component/CheckOut/CheckOutPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./customer/component/LoginPage/LoginPage";
-import Registration from "./customer/component/Registratiob/Registration";
+import Registration from "./customer/component/Registration/Registration";
 import GiftCard from "./customer/component/GiftCardPage/GiftCard";
 import GameTopupPage from "./customer/component/GameTopUpPage/GameTopupPage";
 import Shop from "./customer/component/ShopPage/Shop";
