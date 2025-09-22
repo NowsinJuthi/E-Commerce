@@ -14,7 +14,8 @@ import GameTopupPage from "./customer/component/GameTopUpPage/GameTopupPage";
 
 import Shop from "./customer/component/ShopPage/Shop";
 import ContactUs from "./customer/component/ContactPage/ContactUs";
-import TopupPage from "./customer/component/SinglePage/TopUpPage";
+import TopUpPage from "./customer/component/SinglePage/TopUpPage";
+
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Navigation cart={cart} setCart={setCart} />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/:title" element={<TopupPage cart={cart} setCart={setCart} />} />
+            <Route path="/:title" element={<TopUpPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
             <Route path="/log-in" element={<LoginPage />} />
