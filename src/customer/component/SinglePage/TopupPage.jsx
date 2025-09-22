@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Topup } from "../Product/TopUp.js";
 import Package from "./Package.jsx";
 import { allProduct } from "../Product/AllProduct.js";
 import Description from "../Description/Description.jsx";
 
-const TopupPage = ({ cart, setCart }) => {
+const TopUpPage = ({ cart, setCart }) => {
   const { title } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -59,4 +58,4 @@ const TopupPage = ({ cart, setCart }) => {
   );
 };
 
-export default TopupPage;
+export default TopUpPage;

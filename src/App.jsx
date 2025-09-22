@@ -11,9 +11,10 @@ import LoginPage from "./customer/component/LoginPage/LoginPage";
 import Registration from "./customer/component/Registratiob/Registration";
 import GiftCard from "./customer/component/GiftCardPage/GiftCard";
 import GameTopupPage from "./customer/component/GameTopUpPage/GameTopupPage";
-import TopupPage from "./customer/component/SinglePage/TopUpPage";
+
 import Shop from "./customer/component/ShopPage/Shop";
 import ContactUs from "./customer/component/ContactPage/ContactUs";
+import TopupPage from "./customer/component/SinglePage/TopUpPage";
 
 
 function App() {
