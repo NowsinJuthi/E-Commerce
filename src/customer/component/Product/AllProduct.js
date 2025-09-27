@@ -113,7 +113,7 @@ export const allProduct = [
     stock: 120,
     product: ['60 UC', '120 UC', '180 UC', '325 UC', '385 UC'],
     productPrice: ['115 TK', '258 TK', '350 TK', '575 TK', '690 TK'],
-    bgimg: "/images/bg.jpg",
+    bgimg: "/images/product-uc.png",
     description: "Top up PUBG Mobile UC instantly and buy skins, outfits, and battle passes.",
     review: { rating: 4.8, totalReviews: 200, comments: [{ user: "Tanvir", comment: "Super fast top-up!" }, { user: "Mina", comment: "Exactly what I needed." }] },
     

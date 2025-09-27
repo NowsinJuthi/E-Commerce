@@ -44,7 +44,7 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
     const subtotal = cart.reduce((acc, item) => acc + (item.productPrice * item.quantity), 0);
 
     return (
-        <div className="p-6">
+        <div className="lg:p-6 p-3">
             {
                 cart.length === 0 ? (
                     <div className="main">
@@ -52,11 +52,12 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                     </div>
                 ) : (
 
-                    <div className="main pt-4 pb-6 text-gray-200
+                    <div className="main lg:py-4 py-2 text-gray-200
                                        bg-boxbg backdrop-blur-sm drop-shadow-lg
                                        rounded-[10px] text-center">
 
-                        <div className="All py-6 w-[60%] mx-auto rounded-[10px] pt-5 p-10 mt-3
+                        <div className="All lg:py-6 lg:w-[60%] w-[95%]
+                         mx-auto rounded-[10px] pt-5 lg:p-10 lg:pl-4
                         bg-box drop-shadow-lg">
                             <h1 className='text-3xl pb-3'>Shopping Cart</h1>
                             <hr className='text-gray-600 pb-5' />
@@ -67,7 +68,8 @@ const CartPage = ({ cart, setCart, selectedProduct, selectedPackageIndex, quanti
                                     <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
 
                                         <div className="left col-span-8 grid grid-cols-12">
-                                            <img src={product.img} alt="" className="w-30 h-28 ml-10 col-span-3" />
+                                            <img src={product.img} alt="" className="h-[70px] w-[150px] lg:w-30 lg:h-28
+                                             lg:ml-10 pl-3 col-span-3" />
 
                                             <div className="package col-span-6 pt-4">
                                                 <p>{product.productTitle}</p>

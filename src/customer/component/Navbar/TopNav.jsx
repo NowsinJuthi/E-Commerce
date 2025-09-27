@@ -7,7 +7,8 @@ const Topnav = () => {
         <div className="sticky top-0 z-[50] bg-background shadow-md">
             <div className="w-full">
                 {/* Top Header */}
-                <div className="text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-2 py-2 px-4 text-sm sm:text-base">
+                <div className="text-white grid
+                 md:grid-cols-2 lg:grid-cols-12 gap-2 py-2 px-4 text-sm sm:text-base">
                     
                     {/* Left side: Welcome */}
                     <h2 className="col-span-1 md:col-span-1 lg:col-span-9 text-center md:text-left">
@@ -15,7 +16,8 @@ const Topnav = () => {
                     </h2>
                     
                     {/* Right side: Contact info */}
-                    <div className="col-span-1 md:col-span-1 lg:col-span-3 flex flex-col sm:flex-row justify-center md:justify-end items-center gap-2 sm:gap-6">
+                    <div className="col-span-1 md:col-span-1 lg:col-span-3 grid grid-cols-2 pl-10 lg:pl-0
+                      sm:flex-row justify-center md:justify-end items-center sm:gap-6">
                         <div className="flex items-center gap-2">
                             <GoClock className="text-lg" /> 
                             <span>11AM - 1AM</span>

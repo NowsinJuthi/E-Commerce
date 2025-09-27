@@ -1,196 +1,171 @@
-import React from 'react';
+import React from "react";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { Link } from "react-router-dom";
+import AllOptions from "../Payment/AllOptions";
 
-const CheckOutPage = ({ cart, setCart, id, img }) => {
+const CheckOutPage = ({ cart, setCart }) => {
+  const handleRemove = (id) => setCart(cart.filter((item) => item.id !== id));
 
-
-  const handleRemove = (id) => setCart(cart.filter(item => item.id !== id));
-
-  const subtotal = cart.reduce((acc, item) => acc + (item.productPrice * item.quantity), 0);
+  const subtotal = cart.reduce(
+    (acc, item) => acc + item.productPrice * item.quantity,
+    0
+  );
 
   return (
-    <div className="main grid grid-cols-12 text-gray-200">
+    <div className="main grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-200 p-4">
       {/* LEFT SIDE: Customer Info */}
-      <div className="left-side col-span-6 mr-3 ml-5 my-10 p-5 rounded-2xl
-       bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)]">
-        <div className="all-info">
-          <h1 className='text-2xl pb-2'>Customer Information</h1>
-          <hr className='text-gray-600' />
+      <div className="left-side col-span-6 rounded-2xl bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)] p-5">
+        <h1 className="text-2xl pb-3">Customer Information</h1>
+        <hr className="border-gray-600 mb-5" />
 
+        <form className="space-y-5">
+          {/* USERNAME */}
+          <div className="relative">
+            <input
+              type="text"
+              name="username"
+              required
+              className="peer w-full p-3 rounded-md bg-[#0b2440] text-gray-200 outline-none"
+            />
+            <span className="absolute left-3 top-2 text-slate-400 transition-all peer-focus:text-green 
+            peer-focus:text-sm peer-focus:-translate-y-4 peer-valid:text-sm peer-valid:-translate-y-4">
+              Your Name
+            </span>
+          </div>
 
-          <form action="submit">
-            <div className="username pb-3 text-center pt-10 w-[60%]">
+          {/* STATE */}
+          <div className="relative">
+            <input
+              type="text"
+              name="state"
+              required
+              className="peer w-full p-3 rounded-md bg-[#0b2440] text-gray-200 outline-none "
+            />
+            <span className="absolute left-3 top-2 text-slate-400 transition-all peer-focus:text-green peer-focus:text-sm peer-focus:-translate-y-4 peer-valid:text-sm peer-valid:-translate-y-4">
+              State
+            </span>
+          </div>
 
-              {/* USENAME */}
-              <label>
-                <input
-                  type="text"
-                  name="username"
-                  required
-                  className='p-2 rounded-md w-[575px] peer
-                                              bg-[#0b2440] border-opacity-50 outline-none 
-                                              focus:border-green peer text-gray-200 mb-4'/>
-                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
-                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
-                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
-                                           backdrop-blur-sm backdrop-opacity-5
-                                           -ml-36 peer-valid:text-[20px] peer-valid:-translate-y-10'>
-                  Your Name
-                </span>
-              </label>
+          {/* MOBILE NUMBER */}
+          <div className="relative">
+            <input
+              type="text"
+              name="number"
+              required
+              className="peer w-full p-3 rounded-md bg-[#0b2440] text-gray-200 outline-none "
+            />
+            <span className="absolute left-3 top-2 text-slate-400 transition-all peer-focus:text-green peer-focus:text-sm peer-focus:-translate-y-4 peer-valid:text-sm peer-valid:-translate-y-4">
+              Mobile Number
+            </span>
+          </div>
 
+          {/* EMAIL */}
+          <div className="relative">
+            <input
+              type="email"
+              name="email"
+              required
+              className="peer w-full p-3 rounded-md bg-[#0b2440] text-gray-200 outline-none "
+            />
+            <span className="absolute left-3 top-2 text-slate-400 transition-all peer-focus:text-green peer-focus:text-sm peer-focus:-translate-y-4 peer-valid:text-sm peer-valid:-translate-y-4">
+              Email Address
+            </span>
+          </div>
 
-              {/* STATE */}
-              <label>
-                <input
-                  type="text"
-                  name="state"
-                  required
-                  className='p-2 rounded-md w-[575px] peer
-                                              bg-[#0b2440] border-opacity-50 outline-none 
-                                              focus:border-green peer text-gray-200 mb-4'
-                />
-                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
-                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
-                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
-                                           backdrop-blur-sm backdrop-opacity-5
-                                           -ml-40 peer-valid:text-[20px] peer-valid:-translate-y-10'>
-                  State
-                </span>
-              </label>
-
-
-
-              {/* MOBILE-NUMBER */}
-
-              <label>
-                <input
-                  type="text"
-                  name="number"
-                  required
-                  className='p-2 rounded-md w-[575px] peer
-                                              bg-[#0b2440] border-opacity-50 outline-none 
-                                              focus:border-green peer text-gray-200 mb-4'
-                />
-                <span className='w-30 text-[16px] text-slate-400 rounded-[5%]
-                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
-                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
-                                           backdrop-blur-sm backdrop-opacity-5
-                                           -ml-30 peer-valid:text-[20px] peer-valid:-translate-y-10'>
-                  Mobile Number
-                </span>
-              </label>
-
-
-              {/* EMAIL-ADDRESS */}
-
-              <label>
-                <input
-                  type="text"
-                  name="email"
-                  required
-                  className='p-2 rounded-md w-[575px] peer
-                                              bg-[#0b2440] border-opacity-50 outline-none 
-                                              focus:border-green peer text-gray-200 mb-4'
-                />
-                <span className='w-30 text-[16px] mb-4 text-slate-400 rounded-[5%]
-                                            left-1/4 -mt-12 tracking-wide peer-focus:text-green pointer-events-none
-                                            peer-focus:text-[13px] peer-focus:-translate-y-4 text-opacity-80 absolute transition duration-200 
-                                           backdrop-blur-sm backdrop-opacity-5
-                                           -ml-32 peer-valid:text-[20px] peer-valid:-translate-y-10'>
-                  Email Address
-                </span>
-              </label>
-
-              {/* NOTE */}
-
-              <label className="relative block">
-                <textarea
-                  name="note"
-                  required
-                  className="peer p-2 rounded-md w-[575px] h-20 align-top
-               bg-[#0b2440]  outline-none
-               focus:border-green text-gray-200 mb-4 resize-none"
-                ></textarea>
-
-                <span
-                  className="absolute left-3 top-2 text-[15px] text-slate-400 tracking-wide
-               pointer-events-none text-opacity-80 transition duration-200
-               peer-focus:text-green peer-focus:text-[12px] peer-focus:-translate-y-4
-               peer-valid:text-green peer-valid:text-[12px] peer-valid:-translate-y-4"
-                >
-                  Note
-                </span>
-              </label>
-
-            </div>
-          </form>
-        </div>
+          {/* NOTE */}
+          <div className="relative">
+            <textarea
+              name="note"
+              required
+              className="peer w-full p-3 h-24 rounded-md bg-[#0b2440] text-gray-200 outline-none focus:border-green resize-none"
+            ></textarea>
+            <span className="absolute left-3 top-2 text-slate-400 transition-all peer-focus:text-green peer-focus:text-sm peer-focus:-translate-y-4 peer-valid:text-sm peer-valid:-translate-y-4">
+              Note
+            </span>
+          </div>
+        </form>
       </div>
 
       {/* RIGHT SIDE: Order Summary */}
-      <div className="right-side col-span-6 ml-3 mr-5 my-10 p-5 rounded-2xl
-      bg-boxbg backdrop-blur-sm drop-shadow-lg">
+      <div className="right-side col-span-6 rounded-2xl bg-boxbg backdrop-blur-sm drop-shadow-lg p-5">
+        <h1 className="text-2xl mb-5">Order Summary</h1>
 
-        <div className='w-[99%] mx-auto rounded-2xl
-        bg-box drop-shadow-lg'>
-          <h1 className='text-2xl p-5 '>Order Summery</h1>
-
-
-          {cart.map((product, index) => (
+        <div className="space-y-6">
+          {cart.length === 0 ? (
             <>
-
-              <div key={index} className="all-itmes pt-5 grid grid-cols-12 items-center gap-2">
-
-                <div className="left col-span-8 grid grid-cols-12">
-                  <img src={product.img} alt="" className="w-30 h-28 ml-10 col-span-6" />
-
-                  <div className="package col-span-6 pt-4">
-                    <p>{product.productTitle}</p>
-                    <p>{product.package}</p>
+              <img className="w-[80%] h-[50%] mx-auto" src="/images/empty.png" alt="Empty cart" />
+              <p className="text-gray-300 text-2xl text-center">Your cart is empty</p>
+              <div className="shopping text-center pb-5">
+                <Link
+                  to="/"
+                  className="flex justify-center items-center text-gray-200 text-sm hover:text-website transition-colors duration-200"
+                >
+                  <span>Continue Shopping</span>
+                  <IoIosArrowRoundForward className="mt-1" size={25} />
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              {cart.map((product) => (
+                <div
+                  key={product.id}
+                  className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center bg-box rounded-xl p-4"
+                >
+                  {/* IMAGE + DETAILS */}
+                  <div className="sm:col-span-8 flex gap-4 items-center">
+                    <img
+                      src={product.img}
+                      alt={product.productTitle}
+                      className="w-20 h-20 rounded-md object-cover"
+                    />
                     <div>
+                      <p className="text-sm lg:text-lg">{product.productTitle}</p>
+                      <p className="text-sm text-gray-400">Package: {product.package}</p>
                       {product.categorys === "games to up" && (
-                        <p className='col-span-3 pt-12 text-[14px]'>
-                          Player ID: {product.playerId}
-                        </p>
+                        <p className="text-xs text-gray-400">Player ID: {product.playerId}</p>
                       )}
                     </div>
-
-
-
                   </div>
-                </div>
 
-                <div className="right col-span-4">
-                  <p className='col-span-3'>Price: {product.productPrice} TK</p>
-                  <p className='col-span-2'>Quantity: {product.quantity}</p>
-                  <p className='col-span-3'>SubTotal: {product.productPrice * product.quantity} TK</p>
+                  {/* PRICE INFO */}
+                  <div className="sm:col-span-4 text-sm lg:text-lg space-y-1">
+                    <p>Price: {product.productPrice} TK</p>
+                    <p>Quantity: {product.quantity}</p>
+                    <p>SubTotal: {product.productPrice * product.quantity} TK</p>
+                  </div>
+
+                  <button
+                    onClick={() => handleRemove(product.id)}
+                    className="text-red-400 hover:text-red-600 text-sm sm:col-span-12 text-center"
+                  >
+                    Remove
+                  </button>
                 </div>
-              </div >
-              <button
-                onClick={() => handleRemove(product.id)}
-                className='col-span-1 cursor-pointer hover:text-red-600 pb-4 max-auto w-full py-2'>
-                Remove
-              </button>
-              <hr className='text-gray-700 pb-5 w-[90%] mx-auto' />
+              ))}
+
+              {/* FINAL SUBTOTAL (only once) */}
+              <div className="text-center mt-6 text-gray-200 bg-box py-2.5 rounded-xl hover:bg-[#39557c]">
+                <h2 className="text-lg font-bold">Cart Totals: {subtotal} TK</h2>
+              </div>
+
+              {/* <AllOptions/> */}
+              {/* ORDER BUTTON */}
+              <div className="mt-6">
+                <button className="w-full cursor-pointer bg-box
+                   text-gray-200 py-3 rounded-xl hover:bg-[#39557c]">
+                  Order Now
+                </button>
+              </div>
             </>
-          ))}
-          <div className="subtotal pt-5 text-right pr-10">
-            <h2 className="text-lg font-bold">
-              Cart Totals: {subtotal} TK
-            </h2>
-          </div>
-
-          <div className="order">
-            <button className='mt-6 mb-5 mx-7 w-[90%] cursor-pointer bg-button text-gray-200 py-2
-                    rounded-xl hover:bg-[#39557c] '>
-              Order Now</button>
-          </div>
+          )}
         </div>
+
+
+
       </div>
-    </div >
+    </div>
   );
 };
 
 export default CheckOutPage;
-
-

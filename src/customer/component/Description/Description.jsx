@@ -5,7 +5,7 @@ import { allProduct } from '../Product/AllProduct';
 const Description = () => {
   const { title } = useParams();
   const [product, setProduct] = useState(null);
-  const [show, setShow] = useState("description"); // fixed
+  const [show, setShow] = useState("description");
 
   const handleClick = (selection) => {
     setShow(selection);
@@ -30,35 +30,25 @@ const Description = () => {
 
   return (
     <div className="main text-gray-200">
-      <div className="all-info bg-boxbg mx-5 p-6 rounded-2xl shadow-lg mb-7">
+      <div className="all-info bg-boxbg lg:mx-5 mx-3 lg:p-6 p-2 rounded-2xl shadow-lg mb-7">
 
         {/* Tabs */}
-        <div className="mx-auto w-full flex justify-center border-gray-700 space-x-6 text-lg font-medium">
-          <button className={`pb-2 px-2 transition ${show === "description" ?
-            "border-t-2 rounded-lg"
-            : "text-gray-400 hover:text-gray-200"
-            }`}
+        <div className="mx-auto w-full text-sm flex justify-center
+        border-gray-700 space-x-3 lg:text-lg font-medium">
+          <button className={`pb-2 px-2 transition ${show === "description" ? "border-t-2 rounded-lg" : "text-gray-400 hover:text-gray-200"}`}
             onClick={() => handleClick("description")}>
             Description
           </button>
 
           <button
-            className={`pb-2 px-2 transition ${show === "review"
-              ? "border-t-2 rounded-lg"
-              : "text-gray-400 hover:text-gray-200"
-              }`}
-            onClick={() => handleClick("review")}
-          >
+            className={`pb-2 px-2 transition ${show === "review" ? "border-t-2 rounded-lg" : "text-gray-400 hover:text-gray-200"}`}
+            onClick={() => handleClick("review")}>
             Review
           </button>
 
           <button
-            className={`pb-2 px-2 transition ${show === "shippingAndDelivery"
-              ? "border-t-2 rounded-lg"
-              : "text-gray-400 hover:text-gray-200"
-              }`}
-            onClick={() => handleClick("shippingAndDelivery")}
-          >
+            className={`pb-2 px-2 transition ${show === "shippingAndDelivery" ? "border-t-2 rounded-lg" : "text-gray-400 hover:text-gray-200"}`}
+            onClick={() => handleClick("shippingAndDelivery")}>
             Shipping & Delivery
           </button>
         </div>
@@ -86,13 +76,13 @@ const Description = () => {
           )}
 
           {show === "shippingAndDelivery" && (
-            <div className="grid grid-cols-12">
+            <div className="lg:grid grid-cols-12">
 
               <div className="left col-span-6">
                 <img src="/images/shipping.png" alt="" />
               </div>
 
-              <div className="right col-span-6">
+              <div className="right col-span-6 p-4">
                 <div className="top-up pb-14">
                   <h1 className='text-3xl pb-3'>গেম টপ আপ</h1>
                   <ul>

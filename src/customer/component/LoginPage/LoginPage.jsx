@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
-    <div className="main min-h-screen flex items-center justify-center px-4">
+    <div className="main my-10 mx-5 lg:mx-0 flex items-center
+     justify-center">
       <form
         className="bg-box backdrop-blur-md rounded-2xl 
                    w-full max-w-md md:max-w-lg lg:max-w-xl

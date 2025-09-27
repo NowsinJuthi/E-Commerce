@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const UseLink = () => {
     return (
         <>
-            <div className="main grid grid-rows-6 pl-12">
+            <div className="main grid grid-rows-6 text-sm">
                 <Link to={''}>
                     Refund And Returns Policy
                 </Link>

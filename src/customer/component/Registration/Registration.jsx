@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Registration = () => {
   return (
-    <div className="main min-h-screen flex items-center justify-center px-4">
+    <div className="main my-10 flex items-center justify-center px-4">
       <form
         className="bg-box backdrop-blur-md rounded-2xl 
                    w-full max-w-md md:max-w-lg lg:max-w-xl 
