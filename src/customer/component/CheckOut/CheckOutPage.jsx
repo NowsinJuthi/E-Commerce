@@ -12,7 +12,8 @@ const CheckOutPage = ({ cart, setCart }) => {
   );
 
   return (
-    <div className="main grid grid-cols-1 lg:grid-cols-12 gap-6 text-gray-200 p-4">
+    <div className="main grid grid-cols-1 lg:grid-cols-12 
+    gap-6 text-gray-200 p-4 h-screen 3xl:mx-[20%] 3xl:my-[1%]">
       {/* LEFT SIDE: Customer Info */}
       <div className="left-side col-span-6 rounded-2xl bg-boxbg backdrop-blur-sm shadow-[0_-0.5px_20px_rgba(0.1,0,0,0.5)] p-5">
         <h1 className="text-2xl pb-3">Customer Information</h1>

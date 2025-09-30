@@ -8,8 +8,6 @@ import { TbMessageCircleQuestion } from "react-icons/tb";
 const Socialicones = () => {
   const [openIcones, setOpenIcones] = useState(false);
 
-  const [DarkMode, setDarkMode] = useState(true);
-
   useEffect(() => {
     if (openIcones) {
       const timer = setTimeout(() => {
@@ -60,13 +58,13 @@ const Socialicones = () => {
           onClick={() => setOpenIcones((prev) => !prev)}
           className="open-close relative flex items-center justify-center cursor-pointer"
         >
-          {/* <span class="relative flex h-8 w-8">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-b from-green from-70% to-white opacity-100 to-90%"></span>
-          <span class="relative inline-flex rounded-full h-8 w-8 bg-gradient-to-b from-green to-white"></span>
+          {/* <span className="relative flex h-8 w-8">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-b from-green from-70% to-white opacity-100 to-90%"></span>
+          <span className="relative inline-flex rounded-full h-8 w-8 bg-gradient-to-b from-green to-white"></span>
         </span> */}
           {openIcones ? (
-            <span class="relative flex h-12 w-12">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-100 to-90%"></span>
+            <span className="relative flex h-12 w-12">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-100 to-90%"></span>
               <IoCloseOutline
                 className={`relative h-12 w-12 bg-gradient-to-l from-green-500 via-green-400 to-green-200 text-white rounded-full z-20 transition-transform duration-500 ${
                   openIcones ? "rotate-90" : "rotate-0"
@@ -74,8 +72,8 @@ const Socialicones = () => {
               />
             </span>
           ) : (
-            <span class="relative flex h-12 w-12">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-100 to-90%"></span>
+            <span className="relative flex h-12 w-12">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green opacity-100 to-90%"></span>
               <TbMessageCircleQuestion
                 className={`relative h-12 w-12 bg-gradient-to-t from-green-500 via-green-400 to-green-200 text-white p-2 rounded-full z-20 transition-transform duration-500 ${
                   openIcones ? "rotate-90" : "rotate-0"

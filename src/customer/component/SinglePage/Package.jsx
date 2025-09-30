@@ -68,8 +68,9 @@ const Package = ({ cart, setCart }) => {
             <div className="transparents lg:grid grid-cols-12 lg:px-5 px-3">
 
                 {/* Left Side */}
-                <div className="left lg:h-56 lg:gap-4 gap-2 grid lg:grid-cols-2 grid-cols-1 col-span-6 pb-5 pt-2 px-2
-                 my-3 lg:px-4 mt-8 rounded-2xl bg-boxbg backdrop-blur-sm 
+                <div className="left lg:h-[300px] lg:gap-4 gap-2 grid lg:grid-cols-2 grid-cols-1 
+                 col-span-6 pb-5 pt-5 px-3
+                 my-3 mt-8 rounded-2xl bg-boxbg backdrop-blur-sm 
                  drop-shadow-lg">
                     {selectedProduct.product &&
                         selectedProduct.product.map((prod, index) => (

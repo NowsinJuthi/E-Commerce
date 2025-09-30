@@ -1,11 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+
+    const userData = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    console.log("userData", userData);
+    event.target.reset();
+  };
+
   return (
-    <div className="main my-10 mx-5 lg:mx-0 flex items-center
-     justify-center">
+    <div
+      className="main my-10 mx-5 lg:mx-0 flex items-center
+     justify-center h-screen"
+    >
       <form
+        onSubmit={handleSubmit}
         className="bg-box backdrop-blur-md rounded-2xl 
                    w-full max-w-md md:max-w-lg lg:max-w-xl
                    mx-auto p-6"
@@ -16,49 +32,62 @@ const LoginPage = () => {
         </h1>
         <hr className="text-gray-600 w-3/5 mx-auto" />
 
+      
+  
         {/* Email */}
-        <div className="relative pb-3 pt-10 text-center">
+        <div className="relative mt-6">
           <label className="block relative">
             <input
               required
               type="email"
-              className="p-3 rounded-md w-full
+              name="email"
+              className="peer p-3 rounded-md w-full
                          bg-button
-                         outline-none focus:border-green peer text-gray-200"
+                         outline-none focus:border-green text-gray-200"
             />
-            <span className="absolute left-3 top-3 text-[15px] text-slate-200 
-                             tracking-wide pointer-events-none
-                             peer-focus:text-green peer-focus:text-[12px] 
-                             peer-focus:-translate-y-3 peer-focus:top-1
-                             transition duration-200">
+            <span
+              className="absolute left-3 top-3 text-[15px] text-slate-200 
+                         tracking-wide pointer-events-none
+                         peer-focus:text-green peer-focus:text-[12px] 
+                         peer-focus:-translate-y-3 peer-focus:top-1
+                         peer-valid:text-green peer-valid:text-[12px] 
+                         peer-valid:-translate-y-3 peer-valid:top-1
+                         transition duration-200"
+            >
               Email Address
             </span>
           </label>
         </div>
 
         {/* Password */}
-        <div className="relative pb-3 pt-5 text-center">
+        <div className="relative mt-6">
           <label className="block relative">
             <input
               required
               type="password"
-              className="p-3 rounded-md w-full
-                         bg-button
-                         outline-none focus:border-green peer text-gray-200"
+              name="password"
+              className="peer p-3 rounded-md w-full
+                         bg-button 
+                         outline-none focus:border-green text-gray-200"
             />
-            <span className="absolute left-3 top-3 text-[15px] text-slate-200 
-                             tracking-wide pointer-events-none
-                             peer-focus:text-green peer-focus:text-[12px] 
-                             peer-focus:-translate-y-3 peer-focus:top-1
-                             transition duration-200">
+            <span
+              className="absolute left-3 top-3 text-[15px] text-slate-200 
+                         tracking-wide pointer-events-none
+                         peer-focus:text-green peer-focus:text-[12px] 
+                         peer-focus:-translate-y-3 peer-focus:top-1
+                         peer-valid:text-green peer-valid:text-[12px] 
+                         peer-valid:-translate-y-3 peer-valid:top-1
+                         transition duration-200"
+            >
               Password
             </span>
           </label>
         </div>
-
         {/* Remember & Forgot */}
-        <div className="w-full flex justify-between items-center 
-                        text-gray-200 text-sm py-5">
+        <div
+          className="w-full flex justify-between items-center 
+                        text-gray-200 text-sm py-5"
+        >
           <label className="flex items-center">
             <input className="mr-2 accent-green" type="checkbox" /> Remember me
           </label>

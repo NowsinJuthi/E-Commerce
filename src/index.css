@@ -1,31 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-    --color-border: rgb(124, 147, 173, 0.5);
-    --background-imgbg: linear-gradient(-60deg,
-            rgba(11, 36, 65, 1) 0%,
-            rgba(42, 73, 108, 1) 0%,
-            rgba(11, 36, 65, 1) 70%);
-    --color-box: #344E7180;
-   --color-boxbg:#1e2f44;
-    --color-button: #1e2f44;
-    --color-imgbg:  #fff;
-    --background-nav: linear-gradient(5deg,
-            rgba(11, 36, 64, .95) 0%,
-            rgba(42, 73, 108, 1) 100%,
-            rgba(11, 36, 64, .05) 100%);
-    --background-footer:linear-gradient(5deg,
-            rgba(11, 36, 64, .95) 0%,
-            rgba(42, 73, 108, 1) 100%,
-            rgba(11, 10, 64, .05) 10%);
+  --color-border: rgb(124, 147, 173, 0.5);
+  --background-imgbg: linear-gradient(
+    -60deg,
+    rgba(11, 36, 65, 1) 0%,
+    rgba(42, 73, 108, 1) 0%,
+    rgba(11, 36, 65, 1) 70%
+  );
+  --color-box: #344e7180;
+  --color-boxbg: #1e2f44;
+  --color-button: #1e2f44;
+  --color-imgbg: #fff;
+  --background-nav: linear-gradient(
+    5deg,
+    rgba(11, 36, 64, 0.95) 0%,
+    rgba(42, 73, 108, 1) 100%,
+    rgba(11, 36, 64, 0.05) 100%
+  );
+  --background-footer: linear-gradient(
+    5deg,
+    rgba(11, 36, 64, 0.95) 0%,
+    rgba(42, 73, 108, 1) 100%,
+    rgba(11, 10, 64, 0.05) 10%
+  );
+  --breakpoint-3xl: 2500px;
+
 }
 
 .bg-background {
-    background-image: var(--background-background);
+  background-image: var(--background-background);
 }
 .bg-nav {
-    background-image: var(--background-nav);
+  background-image: var(--background-nav);
 }
 .bg-footer {
-    background-image: var(--background-footer);
+  background-image: var(--background-footer);
 }

@@ -25,7 +25,7 @@ const SingleMainPage = ({ cart, setCart }) => {
 
   return (
     <div
-      className="top bg-cover bg-center">
+      className="top bg-cover bg-center 3xl:mx-[20%] ">
       <div className="transparents ">
 
         {/* DESKTOP */}
