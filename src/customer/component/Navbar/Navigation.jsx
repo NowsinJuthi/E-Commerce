@@ -1,114 +1,96 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
-import { IoCallOutline } from "react-icons/io5";
-import { GoClock } from "react-icons/go";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-import Topnav from "./TopNav";
-import { useEffect, useRef } from "react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../State/Auth/Action";
+import Cookies from "js-cookie";
+import { CiLogin } from "react-icons/ci";
+import Topnav from "./TopNav";
+import UserStore from "../store/UserStore";
 
 const Navigation = ({ cart, setCart }) => {
   const navigate = useNavigate();
-  const cartRef = useRef(null);
+
+  // Mobile menu & cart
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartRef = useRef(null);
+
+  // Profile dropdown
+  const [showDropdown, setShowDropdown] = useState(false);
+  const profileRef = useRef(null);
+
+  const userLogin = UserStore((state) => state.userLogin);
+  const profileDetails = UserStore((state) => state.profileDetails);
+  const logOutUser = UserStore((state) => state.logOutUser);
+  const profileDetailsRequest = UserStore(
+    (state) => state.profileDetailsRequest
+  );
+
+  // Calculate cart subtotal
   const subtotal = cart.reduce(
     (acc, item) => acc + item.productPrice * item.quantity,
     0
   );
 
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem("jwt"); // Remove JWT
-    dispatch({ type: "LOGOUT" }); // Clear Redux auth
-    setIsUserMenuOpen(false);
-  };
-  const userMenuRef = useRef(null);
+  // Fetch profile on token presence
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!userMenuRef.current?.contains(e.target)) setIsUserMenuOpen(false);
-    };
+    const token = Cookies.get("token");
+    if (token && !userLogin) {
+      profileDetailsRequest();
+    }
+  }, [userLogin, profileDetailsRequest]);
 
+  // Close dropdown if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const dispatch = useDispatch();
-  const auth = useSelector((store) => store.auth);
-
-  const jwt = localStorage.getItem("jwt");
-
-  useEffect(() => {
-    if (jwt && !auth.user) {
-      dispatch(getUser(jwt));
-    }
-  }, [jwt, auth.user, dispatch]);
-
-
-  useEffect(() => {
-    if(location.pathname== "/login" || location.pathname== "/register"){
-      navigate(-1)
-}}, [auth.user]);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (cartRef.current && !cartRef.current.contains(event.target)) {
-        setIsMobileMenuOpen(false);
+        setIsCartOpen(false);
       }
     };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+  const toggleDropdown = () => {
+    if (userLogin || profileDetails) setShowDropdown((prev) => !prev);
+  };
+
+  const logoutUser = async () => {
+    const success = await logOutUser();
+    if (success) {
+      sessionStorage.clear();
+      localStorage.clear();
+      setShowDropdown(false);
+      navigate("/login");
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (cartRef.current && !cartRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
+  };
 
   const handleRemove = (id) => setCart(cart.filter((item) => item.id !== id));
 
   return (
-    <div
-      className="sticky top-0 z-[50] 
-    bg-nav"
-    >
+    <div className="sticky top-0 z-[50] bg-nav">
       <div className="w-full">
         <Topnav />
+
         {/* Navbar */}
         <div className="text-white">
           {/* Mobile */}
           <div className="lg:hidden grid grid-cols-12 relative">
             {/* Hamburger + Menu */}
             <div className="list col-span-3 pt-4 relative">
-              {/* Hamburger Icon */}
               <GiHamburgerMenu
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="h-7 w-7 ml-3 cursor-pointer"
@@ -116,14 +98,10 @@ const Navigation = ({ cart, setCart }) => {
 
               {/* Sliding Mobile Menu */}
               <div
-                className={`fixed top-0 left-0 h-screen w-[80%] bg-boxbg text-white p-6 space-y-6 z-50 transform transition-transform duration-300
-                        ${
-                          isMobileMenuOpen
-                            ? "translate-x-0"
-                            : "-translate-x-full"
-                        }`}
+                className={`fixed top-0 left-0 h-screen w-[80%] bg-boxbg text-white p-6 space-y-6 z-50 transform transition-transform duration-300 ${
+                  isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                }`}
               >
-                {/* Close Button */}
                 <div className="flex justify-end">
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -133,7 +111,6 @@ const Navigation = ({ cart, setCart }) => {
                   </button>
                 </div>
 
-                {/* Menu Links */}
                 <ul className="flex flex-col gap-4 mt-4 text-lg">
                   <li>
                     <Link to="/" className="hover:text-green transition">
@@ -167,12 +144,22 @@ const Navigation = ({ cart, setCart }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      to={"/log-in"}
-                      className="flex items-center gap-2 mt-6"
-                    >
-                      <VscAccount className="h-6 w-6" /> Login / Register
-                    </Link>
+                    {!userLogin ? (
+                      <Link
+                        to="/login"
+                        className="flex items-center gap-2 mt-6"
+                      >
+                        <VscAccount className="h-6 w-6" /> Login / Register
+                      </Link>
+                    ) : (
+                      <span
+                        onClick={toggleDropdown}
+                        className="flex items-center gap-2 mt-6 cursor-pointer"
+                      >
+                        <VscAccount className="h-6 w-6" />{" "}
+                        {userLogin?.name || "Profile"}
+                      </span>
+                    )}
                   </li>
                 </ul>
               </div>
@@ -226,90 +213,87 @@ const Navigation = ({ cart, setCart }) => {
 
             {/* Right */}
             <div className="col-span-3 flex justify-center items-center gap-12 pr-6">
-              {/* SEARCH ICON */}
               <IoSearchOutline className="h-6 w-6 cursor-pointer hover:text-green" />
 
               {/* USER ACCOUNT */}
-              
-              <Link
-                to={auth.user ? "/profile" : "/log-in"}
-                className="relative"
+              <div
+                className="relative cursor-pointer select-none"
+                ref={profileRef}
               >
-                <div className="relative">
-                  <div
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center gap-2 cursor-pointer hover:text-green"
-                  >
-                    <VscAccount className="h-6 w-6" />
-                    <span>{auth.user ? auth.user.name : "Sign In"}</span>
-                  </div>
-
-                  {auth.user && isUserMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg z-50">
-                      <Link
-                        to="/profile"
-                        className="block px-4 py-2 hover:bg-gray-800 transition"
-                      >
-                        Profile
-                      </Link>
-                      <Link
-                        to="/my-orders"
-                        className="block px-4 py-2 hover:bg-gray-800 transition"
-                      >
-                        My Orders
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 hover:bg-gray-800 transition"
-                      >
-                        Log Out
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </Link>
+                {!userLogin ? (
+                  <Link to="/login" className="">
+                    {/* <CiLogin /> */}
+                    Login
+                  </Link>
+                ) : (
+                  <>
+                    <span
+                      onClick={toggleDropdown}
+                      className="pl-6 hover:text-blue-600"
+                    >
+                      {userLogin?.name ||
+                        (userLogin?.email
+                          ? (() => {
+                              const emailName = userLogin.email.split("@")[0];
+                              const formatted =
+                                emailName.charAt(0).toUpperCase() +
+                                emailName.slice(1);
+                              return formatted.length > 10
+                                ? formatted.slice(0, 10) + "…"
+                                : formatted;
+                            })()
+                          : null) ||
+                        "Profile"}
+                    </span>
+                    {showDropdown && (
+                      <div className="absolute right-0 mt-2 w-32 bg-boxbg border border-gray-300 rounded shadow-lg z-10">
+                        <Link
+                          to="/profile"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                          onClick={() => setShowDropdown(false)}
+                        >
+                          My Profile
+                        </Link>
+                        <button
+                          onClick={logoutUser}
+                          className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                            
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
 
               {/* CART */}
-              <div className="relative ">
-                {/* Bag Icon */}
+              <div className="relative">
                 <button
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsCartOpen(!isCartOpen)}
                   className="relative p-2 rounded-full hover:bg-gray-800 transform transition-transform duration-500"
                 >
                   <ShoppingBagIcon className="h-7 w-7 text-white hover:text-website transition" />
-
                   {cart.length > 0 && (
-                    <span
-                      className="absolute -top-[1px] -right-1 px-2 text-sm font-medium
-                        text-white bg-red-500 rounded-full shadow"
-                    >
+                    <span className="absolute -top-[1px] -right-1 px-2 text-sm font-medium text-white bg-red-500 rounded-full shadow">
                       {cart.length}
                     </span>
                   )}
                 </button>
 
-                {/* Dropdown / Sidebar */}
+                {/* Cart Sidebar */}
                 <div
                   ref={cartRef}
-                  className={`fixed overflow-auto border-l border-dotted border-boxbg 
-                    top-0 right-0 h-full w-[450px] bg-gray-900 shadow-lg p-2
-                     text-white z-50
-                               transform transition-transform duration-500
-                             ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+                  className={`fixed overflow-auto border-l border-dotted border-boxbg top-0 right-0 h-full w-[450px] bg-gray-900 shadow-lg p-2 text-white z-50 transform transition-transform duration-500 ${
+                    isCartOpen ? "translate-x-0" : "translate-x-full"
+                  }`}
                 >
-                  {/* Header with Exit Button */}
-                  <div
-                    className="flex justify-between items-center border-b
-                   border-gray-700 pb-2 "
-                  >
-                    <h3
-                      className="font-semibold text-3xl px-[94px] py-2
-                     bg-box rounded-lg"
-                    >
+                  {/* Header */}
+                  <div className="flex justify-between items-center border-b border-gray-700 pb-2">
+                    <h3 className="font-semibold text-3xl px-[94px] py-2 bg-box rounded-lg">
                       Shopping Cart
                     </h3>
                     <button
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsCartOpen(false)}
                       className="p-1 rounded-full hover:bg-gray-800"
                     >
                       <XMarkIcon className="h-6 w-6 text-white" />
@@ -317,66 +301,56 @@ const Navigation = ({ cart, setCart }) => {
                   </div>
 
                   {cart.length === 0 ? (
-                    <>
+                    <div className="text-center mt-10">
                       <img
                         className="w-[80%] h-[50%] mx-auto"
                         src="/images/empty.png"
-                        alt=""
+                        alt="empty cart"
                       />
-                      <p className="text-gray-300 text-2xl mx-30">
+                      <p className="text-gray-300 text-2xl my-4">
                         Your cart is empty
                       </p>
-                      <div className="shopping mx-36 pb-5">
-                        <Link
-                          to="/"
-                          className="flex items-center  text-gray-200 text-sm hover:text-website transition-colors duration-200"
-                        >
-                          <span>Continue Shopping</span>
-                          <IoIosArrowRoundForward className="mt-1" size={25} />
-                        </Link>
-                      </div>
-                    </>
+                      <Link
+                        to="/"
+                        className="flex items-center justify-center text-gray-200 text-sm hover:text-website transition-colors duration-200"
+                      >
+                        <span>Continue Shopping</span>
+                        <IoIosArrowRoundForward className="mt-1" size={25} />
+                      </Link>
+                    </div>
                   ) : (
                     <ul className="bg-box h-screen rounded-lg mt-3">
                       {cart.map((product, index) => (
-                        <>
-                          <div
-                            key={index}
-                            className="all-itmes pt-5 grid grid-cols-12 items-center gap-2 text-xs"
-                          >
-                            <div className="left col-span-8 grid grid-cols-12">
-                              <img
-                                src={product.img}
-                                alt=""
-                                className="w-20 h-20 ml-10 col-span-6"
-                              />
-
-                              <div className="package col-span-6 pt-4">
-                                <p>{product.productTitle}</p>
-
-                                <p>{product.package}</p>
-                                {product.categorys === "games to up" && (
-                                  <p className="col-span-3 pt-12 text-[14px]">
-                                    Player ID: {product.playerId}
-                                  </p>
-                                )}
-                                <p>Player ID: {product.playerId}</p>
-                              </div>
-                            </div>
-
-                            <div className="right col-span-4">
-                              <p className="col-span-3">
-                                Price: {product.productPrice} TK
-                              </p>
-                              <p className="col-span-2">
-                                Quantity: {product.quantity}
-                              </p>
-                              <p className="col-span-3">
-                                SubTotal:{" "}
-                                {product.productPrice * product.quantity} TK
-                              </p>
+                        <li
+                          key={index}
+                          className="pt-5 grid grid-cols-12 items-center gap-2 text-xs"
+                        >
+                          <div className="col-span-8 grid grid-cols-12">
+                            <img
+                              src={product.img}
+                              alt=""
+                              className="w-20 h-20 ml-10 col-span-6"
+                            />
+                            <div className="package col-span-6 pt-4">
+                              <p>{product.productTitle}</p>
+                              <p>{product.package}</p>
+                              {product.categorys === "games to up" && (
+                                <p className="text-[14px]">
+                                  Player ID: {product.playerId}
+                                </p>
+                              )}
                             </div>
                           </div>
+
+                          <div className="col-span-4">
+                            <p>Price: {product.productPrice} TK</p>
+                            <p>Quantity: {product.quantity}</p>
+                            <p>
+                              Subtotal:{" "}
+                              {product.productPrice * product.quantity} TK
+                            </p>
+                          </div>
+
                           <button
                             onClick={() => handleRemove(product.id)}
                             className="col-span-1 cursor-pointer hover:text-red-600 py-4 w-full max-auto"
@@ -384,7 +358,7 @@ const Navigation = ({ cart, setCart }) => {
                             Remove
                           </button>
                           <hr className="text-gray-700 pb-5 w-[90%] mx-auto" />
-                        </>
+                        </li>
                       ))}
 
                       <div className="subtotal pt-5 w-[50%] mx-auto pb-5">
@@ -394,12 +368,12 @@ const Navigation = ({ cart, setCart }) => {
                       </div>
 
                       <div className="button mx-3">
-                        <Link to={"/cart"}>
+                        <Link to="/cart">
                           <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
                             View Cart
                           </button>
                         </Link>
-                        <Link to={"/check-out"}>
+                        <Link to="/check-out">
                           <button className="w-full mt-3 bg-button hover:bg-[#2c4d75] text-white py-2 rounded-lg transition">
                             Order Now
                           </button>

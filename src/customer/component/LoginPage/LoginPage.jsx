@@ -1,18 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UserStore from "../store/UserStore";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const LoginData = UserStore((state) => state.LoginData);
+  const setLoginData = UserStore((state) => state.setLoginData);
+  const loginUser = UserStore((state) => state.loginUser);
 
-    const data = new FormData(event.currentTarget);
+  const navigate = useNavigate();
 
-    const userData = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
-    console.log("userData", userData);
-    event.target.reset();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await loginUser(LoginData);
+
+      console.log("Response Data:", res);
+
+      if (res.message === "Login Success") {
+        toast.success("Login successful!");
+
+        setLoginData("email", "");
+        setLoginData("password", "");
+
+        navigate("/profile");
+      } else {
+        toast.error(res.message || "Login failed");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (
@@ -32,12 +50,12 @@ const LoginPage = () => {
         </h1>
         <hr className="text-gray-600 w-3/5 mx-auto" />
 
-      
-  
         {/* Email */}
         <div className="relative mt-6">
           <label className="block relative">
             <input
+              value={LoginData.email}
+              onChange={(e) => setLoginData("email", e.target.value)}
               required
               type="email"
               name="email"
@@ -63,6 +81,8 @@ const LoginPage = () => {
         <div className="relative mt-6">
           <label className="block relative">
             <input
+              value={LoginData.password}
+              onChange={(e) => setLoginData("password", e.target.value)}
               required
               type="password"
               name="password"

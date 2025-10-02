@@ -14,6 +14,7 @@ import GameTopupPage from "./customer/component/GameTopUpPage/GameTopupPage";
 import SingleMainPage from "./customer/component/SinglePage/SingleMainPage";
 import ContactUs from "./customer/component/ContactPage/ContactUs";
 import Shop from "./customer/component/ShopPage/Shop";
+import Profile from "./customer/component/Profile/Profile";
 
 
 function App() {
@@ -31,12 +32,13 @@ function App() {
             <Route path="/:title" element={<SingleMainPage cart={cart} setCart={setCart} />} />
             <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
             <Route path="/check-out" element={<CheckOutPage cart={cart} setCart={setCart} />} />
-            <Route path="/log-in" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/git-card" element={<GiftCard />} />
             <Route path="/games-top-up" element={<GameTopupPage />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <ToastContainer
             position="top-right"
