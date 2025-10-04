@@ -1,13 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserStore from "../store/UserStore";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
 
-const LoginPage = () => {
-  const LoginData = UserStore((state) => state.LoginData);
-  const setLoginData = UserStore((state) => state.setLoginData);
-  const loginUser = UserStore((state) => state.loginUser);
+const ForgotPassword = () => {
+  const ForgotData = UserStore((state) => state.ForgotData);
+  const setForgot = UserStore((state) => state.setForgot);
+  const ForgotUser = UserStore((state) => state.ForgotUser);
 
   const navigate = useNavigate();
 
@@ -15,14 +14,19 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await loginUser(LoginData);
+      const res = await ForgotUser(ForgotData);
+
       console.log("Response Data:", res);
 
-      const role = Number(Cookies.get("role"));
-      if (role === 1) {
-        navigate("/admin");
-      } else {
+      if (res.message === "Password Reset Successfully") {
+        toast.success("Password Reset successful!");
+
+        setForgot("email", "");
+        setForgot("newPassword", "");
+
         navigate("/profile");
+      } else {
+        toast.error("Password Reset failed");
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
@@ -32,13 +36,14 @@ const LoginPage = () => {
   return (
     <>
       <Helmet>
-        <title>Login| UniQbd</title>
+        <title>ForgotPassword| UniQbd</title>
         <meta
           name="description"
           content="Manage users, content, and settings."
         />
         <meta name="keywords" content="UniQbd admin, dashboard, management" />
       </Helmet>
+      
       <div
         className="main my-10 mx-5 lg:mx-0 flex items-center
      justify-center h-screen"
@@ -51,7 +56,7 @@ const LoginPage = () => {
           action=""
         >
           <h1 className="text-3xl md:text-4xl font-serif text-green text-center text-gray-200 pb-2">
-            Log In
+            Reset Password
           </h1>
           <hr className="text-gray-600 w-3/5 mx-auto" />
 
@@ -59,8 +64,8 @@ const LoginPage = () => {
           <div className="relative mt-6">
             <label className="block relative">
               <input
-                value={LoginData.email}
-                onChange={(e) => setLoginData("email", e.target.value)}
+                value={ForgotData.email}
+                onChange={(e) => setForgot("email", e.target.value)}
                 required
                 type="email"
                 name="email"
@@ -86,11 +91,11 @@ const LoginPage = () => {
           <div className="relative mt-6">
             <label className="block relative">
               <input
-                value={LoginData.password}
-                onChange={(e) => setLoginData("password", e.target.value)}
+                value={ForgotData.newPassword}
+                onChange={(e) => setForgot("newPassword", e.target.value)}
                 required
                 type="password"
-                name="password"
+                name="newPassword"
                 className="peer p-3 rounded-md w-full
                          bg-button 
                          outline-none focus:border-green text-gray-200"
@@ -104,46 +109,20 @@ const LoginPage = () => {
                          peer-valid:-translate-y-3 peer-valid:top-1
                          transition duration-200"
               >
-                Password
+                New Password
               </span>
             </label>
           </div>
-          {/* Remember & Forgot */}
-          <div
-            className="w-full flex justify-between items-center 
-                        text-gray-200 text-sm py-5"
-          >
-            <label className="flex items-center">
-              <input className="mr-2 accent-green" type="checkbox" /> Remember
-              me
-            </label>
-            <Link
-              to={"/forgot-password"}
-              className="text-green hover:underline"
-            >
-              Forgot password?
-            </Link>
-          </div>
 
           {/* Submit button */}
-          <div className="text-center">
+          <div className="text-center mt-10">
             <button
               type="submit"
               className="w-full py-2 rounded-lg bg-button text-white font-medium 
                        hover:bg-green/80 transition"
             >
-              Log In
+              Password Reset
             </button>
-          </div>
-
-          {/* Registration */}
-          <div className="registration pt-6 text-center text-gray-200">
-            <p>
-              Don’t have an account?{" "}
-              <Link to="/registration" className="text-green hover:underline">
-                Registration
-              </Link>
-            </p>
           </div>
         </form>
       </div>
@@ -151,4 +130,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPassword;

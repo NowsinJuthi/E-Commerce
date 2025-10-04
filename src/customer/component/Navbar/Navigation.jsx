@@ -9,10 +9,22 @@ import Cookies from "js-cookie";
 import { CiLogin } from "react-icons/ci";
 import Topnav from "./TopNav";
 import UserStore from "../store/UserStore";
+import { Helmet } from "react-helmet";
 
-const Navigation = ({ cart, setCart }) => {
+
+const Navigation = ({ cart, setCart}) => {
+
+   
+
+
   const navigate = useNavigate();
 
+  const { logOutUser } = UserStore();
+
+  const handleLogout = async () => {
+    await logOutUser();
+    navigate("/login");
+  };
   // Mobile menu & cart
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,7 +36,7 @@ const Navigation = ({ cart, setCart }) => {
 
   const userLogin = UserStore((state) => state.userLogin);
   const profileDetails = UserStore((state) => state.profileDetails);
-  const logOutUser = UserStore((state) => state.logOutUser);
+
   const profileDetailsRequest = UserStore(
     (state) => state.profileDetailsRequest
   );
@@ -68,15 +80,7 @@ const Navigation = ({ cart, setCart }) => {
     if (userLogin || profileDetails) setShowDropdown((prev) => !prev);
   };
 
-  const logoutUser = async () => {
-    const success = await logOutUser();
-    if (success) {
-      sessionStorage.clear();
-      localStorage.clear();
-      setShowDropdown(false);
-      navigate("/login");
-    }
-  };
+ 
 
   const handleRemove = (id) => setCart(cart.filter((item) => item.id !== id));
 
@@ -248,16 +252,20 @@ const Navigation = ({ cart, setCart }) => {
                     {showDropdown && (
                       <div className="absolute right-0 mt-2 w-32 bg-boxbg border border-gray-300 rounded shadow-lg z-10">
                         <Link
-                          to="/profile"
+                          to={
+                            String(userLogin?.role) === "1"
+                              ? "/admin"
+                              : "/profile"
+                          }
                           className="block px-4 py-2 hover:bg-gray-100"
                           onClick={() => setShowDropdown(false)}
                         >
                           My Profile
                         </Link>
+
                         <button
-                          onClick={logoutUser}
+                          onClick={handleLogout} 
                           className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                            
                           Logout
                         </button>
                       </div>

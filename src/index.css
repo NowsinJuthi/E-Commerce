@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --color-green: #11ae68;
   --color-border: rgb(124, 147, 173, 0.5);
   --background-imgbg: linear-gradient(
     -60deg,
@@ -25,7 +26,6 @@
     rgba(11, 10, 64, 0.05) 10%
   );
   --breakpoint-3xl: 2500px;
-
 }
 
 .bg-background {

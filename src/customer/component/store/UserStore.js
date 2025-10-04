@@ -2,108 +2,121 @@ import axios from "axios";
 import { create } from "zustand";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { Outlet } from "react-router-dom";
+axios.defaults.headers.common["Authorization"] = `Bearer ${Cookies.get(
+  "token"
+)}`;
 
 const UserStore = create((set) => ({
+
   isLogin: () => !!Cookies.get("token"),
 
-  FormData: {
-    name: "",
-    email: "",
-    password: "",
+  FormData: JSON.parse(localStorage.getItem("formData") || "{}"),
+  LoginData: JSON.parse(localStorage.getItem("loginData") || "{}"),
+  userLogin: JSON.parse(localStorage.getItem("userLogin") || "null"),
+  profileDetails: null,
+
+  ForgotData: JSON.parse(localStorage.getItem("forgotData") || "{}"),
+  setForgot: (name, value) => {
+    set((state) => {
+      const newForgotData = { ...state.ForgotData, [name]: value };
+      localStorage.setItem("forgotData", JSON.stringify(newForgotData));
+      return { ForgotData: newForgotData };
+    });
   },
+
   setFormData: (name, value) => {
-    set((state) => ({
-      FormData: {
-        ...state.FormData,
-        [name]: value,
-      },
-    }));
+    set((state) => {
+      const newFormData = { ...state.FormData, [name]: value };
+      localStorage.setItem("formData", JSON.stringify(newFormData));
+      return { FormData: newFormData };
+    });
   },
 
-  LoginData: {
-    email: "",
-    password: "",
-  },
-  setLoginData: (name, value) => {
-    set((state) => ({
-      LoginData: { ...state.LoginData, [name]: value },
-    }));
-  },
-
-  userLogin: null,
-  registerUser: async (formData) => {
+  ForgotUser: async (ForgotData) => {
     try {
-      const res = await axios.post(`/api/v1/register`, formData);
-
-      if (res.data.message === "Register Successful") {
-        Cookies.set("token", res.data.jwt);
-        set({ userLogin: { name: formData.name, email: formData.email } });
-
-        toast.success("Registration successful!");
+      const res = await axios.post(`/api/v1/forgot-password`, {
+        email: ForgotData.email,
+        newPassword: ForgotData.newPassword,
+      });
+      if (res.data.message === "Password reset Success") {
+        const user = { name: ForgotData.name, email: ForgotData.email };
+        set({
+          userLogin: { name: ForgotData.name, email: ForgotData.email },
+          profileDetails: res.data.user || null,
+        });
+        localStorage.setItem("userLogin", JSON.stringify(user));
+        return res.data;
+      } else {
+        return res.data;
       }
-
-      return res;
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error("Password reset failed:", error);
       throw error;
     }
   },
 
- loginUser: async (LoginData) => {
-  try {
-    const res = await axios.post(`/api/v1/login`, {
-      email: LoginData.email,
-      password: LoginData.password,
+  setLoginData: (name, value) => {
+    set((state) => {
+      const newLoginData = { ...state.LoginData, [name]: value };
+      localStorage.setItem("loginData", JSON.stringify(newLoginData));
+      return { LoginData: newLoginData };
     });
+  },
 
-    if (res.data.message === "Login Success") { 
-      Cookies.set("token", res.data.jwt);
-
-      set({
-        userLogin: {
-          name: LoginData.name,
-          email: LoginData.email
-        },
-        profileDetails: res.data.user || null,
-      });
-
-      return res.data; 
-    } else {
-      return res.data;
+  registerUser: async (formData) => {
+    try {
+      const res = await axios.post(`/api/v1/register`, formData);
+      if (res.data.message === "Register Successful") {
+        Cookies.set("token", res.data.jwt);
+        const user = { name: formData.name, email: formData.email };
+        set({ userLogin: user });
+        localStorage.setItem("userLogin", JSON.stringify(user));
+        toast.success("Registration successful!");
+      }
+      return res;
+    } catch (err) {
+      console.error("Registration failed:", err);
+      throw err;
     }
-  } catch (error) {
-    console.error("Login failed:", error);
-    throw error;
-  }
+  },
+
+  loginUser: async (LoginData) => {
+    try {
+      const res = await axios.post(`/api/v1/login`, {
+        email: LoginData.email,
+        password: LoginData.password,
+        
+      });
+      if (res.data.message === "Login Success") {
+        Cookies.set("token", res.data.jwt);
+        Cookies.set("role", res.data.role);
+
+        const user = { name: LoginData.name, email: LoginData.email, role: Number(res.data.role) };
+        set({
+          userLogin: user,
+          profileDetails: res.data.user || null,
+        });
+        localStorage.setItem("userLogin", JSON.stringify(user));
+        return res.data;
+      } else {
+        return res.data;
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      throw error;
+    }
+  },
+
+ logOutUser: async () => {
+  Cookies.remove("token");
+  localStorage.removeItem("userLogin");
+  localStorage.removeItem("formData");
+  localStorage.removeItem("loginData");
+  set({ userLogin: null });
 },
 
-  logOutUser: async () => {
-    try {
-      set({ userLogin: null });
-      Cookies.remove("token");
-      console.log("Logout successful (client-side)");
-      return true;
-    } catch (err) {
-      console.error("Logout failed:", err);
-      return false;
-    }
-  },
 
-  profileData: {
-    name: "",
-    email: "",
-    password: "",
-  },
-  setprofileData: (name, value) => {
-    set((state) => ({
-      profileData: {
-        ...state.profileData,
-        [name]: value,
-      },
-    }));
-  },
-
-  profileDetails: null,
   profileDetailsRequest: async (updateFields = true) => {
     try {
       let res = await axios.get(`/api/v1/profile`);
@@ -129,15 +142,6 @@ const UserStore = create((set) => ({
     }
   },
 
-  resetProfileData: () =>
-    set({
-      profileData: {
-        name: "",
-        email: "",
-        password: "",
-      },
-    }),
-
   profileSaveRequest: async (postBoby) => {
     try {
       set({ profileDetails: null });
@@ -146,6 +150,11 @@ const UserStore = create((set) => ({
     } catch (error) {
       console.error("Profile save failed:", error);
     }
+  },
+
+  initUser: async () => {
+    const user = JSON.parse(localStorage.getItem("userLogin"));
+    if (user) set({ userLogin: user });
   },
 }));
 
